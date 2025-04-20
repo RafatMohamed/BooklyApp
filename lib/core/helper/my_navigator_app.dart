@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constant/app_constant.dart';
+
 abstract class AppNavigator {
   static void navigatorPush({
     required BuildContext context,
@@ -23,12 +25,12 @@ abstract class AppNavigator {
   static Future<T?> navigatorPushGo<T>({
     required BuildContext context,
     required Widget navigatorToPage,
+    Transition transition=Transition.fadeIn,
   }) async {
     return Get.to<T>(
           () => navigatorToPage,
-      duration: const Duration(seconds: 1),
-      transition: Transition.fadeIn,
+      duration:  kTranstionDuration,
+      transition: transition,
     );
   }
-
 }

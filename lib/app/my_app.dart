@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 import '../core/constant/app_constant.dart';
-import '../main.dart';
+import '../features/splash/views/splash_view.dart';
 
 class BookApp extends StatelessWidget {
   const BookApp({super.key});
@@ -9,13 +9,15 @@ class BookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: kAppTitle,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: kPrimaryColor,
-        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+        textTheme:ThemeData.dark().textTheme.apply(
+          fontFamily: kFontFamilyMA
+        ),
       ),
-      home: const MyHomePage(),
+      home: const SplashView(),
     );
   }
 }
