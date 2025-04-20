@@ -14,7 +14,7 @@ class CustomAppBarWidget extends StatelessWidget {
       children: [
         Image.asset(AppImage.logoImage,width: 120,),
         IconButton(onPressed: () {},
-          icon: const Icon(Icons.search,size: 32,),),
+          icon: const Icon(Icons.search_sharp,size: 32,),),
       ],
     );
   }
