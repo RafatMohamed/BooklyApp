@@ -52,9 +52,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: "GT Sectra Fine"
+    - family: GT Sectra Fine
       fonts:
         - asset: assets/fonts/GT Sectra Fine Regular.ttf
+
+    - family: Montserrat Alternates
+
+      fonts:
+        - asset: assets/fonts/Montserrat,Montserrat_Alternates/Montserrat_Alternates/MontserratAlternates-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
