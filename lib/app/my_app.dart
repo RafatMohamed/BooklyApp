@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../core/constant/app_constant.dart';
 import '../main.dart';
 
@@ -10,11 +9,11 @@ class BookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       title: kAppTitle,
-      theme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: kPrimaryColor,
+        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
       home: const MyHomePage(),
     );
