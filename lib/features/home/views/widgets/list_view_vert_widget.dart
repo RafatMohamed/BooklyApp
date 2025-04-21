@@ -15,7 +15,7 @@ class ListViewVert extends StatelessWidget {
           children: [CustomCardBestSeller(), SizedBox(height: 20)],
         );
       },
-      itemCount: 20,
+      itemCount: 5,
     );
   }
 }

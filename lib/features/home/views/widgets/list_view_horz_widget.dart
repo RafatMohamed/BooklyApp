@@ -38,7 +38,7 @@ class _ListViewHorzState extends State<ListViewHorz> {
             child: AnimationItemCategory(isSelected: isSelected),
           );
         },
-        itemCount: 10,
+        itemCount: 5,
       ),
     );
   }

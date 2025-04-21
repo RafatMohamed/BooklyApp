@@ -42,7 +42,7 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
 
   }
   void goToHome() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       if (context.mounted) {
         return AppNavigator.navigatorPushGo(
             navigatorToPage: () => const HomeView(),
@@ -55,7 +55,7 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
   void initAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
     );
     animation = Tween<Offset>(
       begin: const Offset(0, 20),
