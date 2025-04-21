@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 abstract class AppPadding{
-  static final EdgeInsetsGeometry h16V16 = const EdgeInsetsDirectional.symmetric(
-      horizontal: 16,
-      vertical: 16
+  static final EdgeInsetsGeometry s20T20 = const EdgeInsetsDirectional.only(
+      start: 20,
+      top: 20,
+  );static final EdgeInsetsGeometry e20 = const EdgeInsetsDirectional.only(
+      end: 20,
   );
 }

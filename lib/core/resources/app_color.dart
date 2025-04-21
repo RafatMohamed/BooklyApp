@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColor {
+abstract class AppColor {
   final BuildContext context;
   AppColor(this.context);
 
@@ -13,4 +13,5 @@ class AppColor {
       Theme.of(context).brightness == Brightness.dark
           ? Colors.black
           : Colors.white;
+  static Color highlightColor =Colors.white.withValues(alpha: 0.3);
 }

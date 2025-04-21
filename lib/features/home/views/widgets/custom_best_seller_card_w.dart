@@ -2,20 +2,29 @@ import 'package:bookly_app/features/home/views/widgets/custom_image_w.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resources/text_styles.dart';
 
-class CustomCardBestSeller extends StatelessWidget{
+class CustomCardBestSeller extends StatelessWidget {
   const CustomCardBestSeller({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
-      height: MediaQuery.sizeOf(context).height * 1 / 5.5,
+    return Container(
+      padding: const EdgeInsetsDirectional.only(end: 16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          end: AlignmentDirectional.topCenter,
+          begin: AlignmentDirectional.bottomEnd,
+          colors: [Colors.white10, Colors.black],
+        ),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      // height: MediaQuery.sizeOf(context).height * 1 / 5.5,
       width: double.infinity,
       child: Row(
         children: [
-         customImage(),
-          const SizedBox(width: 14,),
+          customImage(),
+          const SizedBox(width: 14),
           Expanded(
-            child:  Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -26,10 +35,7 @@ class CustomCardBestSeller extends StatelessWidget{
                   overflow: TextOverflow.ellipsis,
                   softWrap: true,
                 ),
-                const Text(
-                  "J.K.Rowling",
-                  style: Styles.textStyle20,
-                ),
+                const Text("J.K.Rowling", style: Styles.textStyle20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -46,15 +52,11 @@ class CustomCardBestSeller extends StatelessWidget{
                           style: Styles.textStyle26.copyWith(fontSize: 18),
                         ),
                         const SizedBox(width: 4),
-                        const Text(
-                          '(4395)',
-                          style: Styles.textStyle18,
-                        ),
+                        const Text('(4395)', style: Styles.textStyle18),
                       ],
-                    )
-
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -62,5 +64,4 @@ class CustomCardBestSeller extends StatelessWidget{
       ),
     );
   }
-
 }

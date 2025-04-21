@@ -8,16 +8,14 @@ class ListViewVert extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.vertical,
-      physics: const ClampingScrollPhysics(),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return const Column(
-          children: [
-            CustomCardBestSeller(),
-            SizedBox(height: 20,),
-          ],
+          children: [CustomCardBestSeller(), SizedBox(height: 20)],
         );
       },
-      itemCount: 10,
+      itemCount: 20,
     );
   }
 }
