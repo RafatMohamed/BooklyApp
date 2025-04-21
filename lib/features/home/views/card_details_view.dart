@@ -13,7 +13,7 @@ class CardDetailsView extends StatelessWidget{
         child: Padding(
           padding: AppPadding.a20,
           child: ListView(
-            children:[
+            children:const[
               ContentDetailsW(),
               ListViewHorz(),
             ],

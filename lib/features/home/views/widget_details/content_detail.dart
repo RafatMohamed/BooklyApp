@@ -24,7 +24,7 @@ class ContentDetailsW extends StatelessWidget {
           child: const DetailsBookAnimation(isDetails: true,),
         ),
         const SizedBox(height: 24,),
-        CustomTextButt(),
+        const CustomTextButt(),
         const SizedBox(height: 24,),
         Align(alignment: AlignmentDirectional.centerStart,child: Text("you can also Like: ", style: Styles.textStyle30.copyWith(fontSize: 24))),
         const SizedBox(height: 16,),

@@ -7,7 +7,7 @@ class CustomTextButt extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
         DefaultTextButton(
           text: "500 E£",
