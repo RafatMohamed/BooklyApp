@@ -45,9 +45,7 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
     Future.delayed(const Duration(seconds: 3), () {
       if (context.mounted) {
         return AppNavigator.navigatorPushGo(
-            // ignore: use_build_context_synchronously
-            context: context,
-            navigatorToPage: const HomeView(),
+            navigatorToPage: () => const HomeView(),
             transition: Transition.topLevel
         );
       }
