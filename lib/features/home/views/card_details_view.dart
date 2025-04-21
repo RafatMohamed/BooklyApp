@@ -13,6 +13,8 @@ class CardDetailsView extends StatelessWidget{
         child: Padding(
           padding: AppPadding.a20,
           child: ListView(
+            physics:const BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
             children:const[
               ContentDetailsW(),
               ListViewHorz(),

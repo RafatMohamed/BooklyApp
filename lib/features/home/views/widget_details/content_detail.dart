@@ -4,6 +4,7 @@ import '../../../../core/resources/text_styles.dart';
 import '../widgets/custom_app_bar_widget.dart';
 import '../widgets/custom_image_w.dart';
 import '../widgets/details_book_animation.dart';
+import 'custom_app_bar.dart';
 import 'custom_text_button_w.dart';
 
 class ContentDetailsW extends StatelessWidget {
@@ -15,7 +16,7 @@ class ContentDetailsW extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const CustomAppBarWidget(),
+        const CustomAppBarDetails(),
         const SizedBox(height: 20,),
         customImage(height: 260),
         const SizedBox(height: 20,),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/helper/my_navigator_app.dart';
 
-class CustomAppBarWidget extends StatelessWidget {
-  const CustomAppBarWidget({super.key});
+class CustomAppBarDetails extends StatelessWidget {
+  const CustomAppBarDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
