@@ -1,9 +1,9 @@
-import 'package:bookly_app/core/helper/my_navigator_app.dart';
-import 'package:bookly_app/features/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/resources/text_styles.dart';
+import '../../../home/views/home_view.dart';
 
 class SplashViewWidget extends StatefulWidget {
   const SplashViewWidget({super.key});

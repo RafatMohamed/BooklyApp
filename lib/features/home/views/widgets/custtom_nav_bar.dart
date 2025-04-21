@@ -1,5 +1,5 @@
-import 'package:bookly_app/core/resources/app_color.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/resources/app_color.dart';
 import '../../../../core/resources/app_image.dart';
 import '../../../../core/resources/app_padding.dart';
 

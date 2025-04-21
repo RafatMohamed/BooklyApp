@@ -1,7 +1,7 @@
-import 'package:bookly_app/core/resources/app_padding.dart';
-import 'package:bookly_app/features/home/views/widgets/custtom_nav_bar.dart';
-import 'package:bookly_app/features/home/views/widgets/list_view_home.dart';
+import 'package:bookly_app_t/features/home/views/widgets/custtom_nav_bar.dart';
+import 'package:bookly_app_t/features/home/views/widgets/list_view_home.dart';
 import 'package:flutter/material.dart';
+import '../../../core/resources/app_padding.dart';
 import 'widgets/custom_app_bar_widget.dart';
 
 class HomeView extends StatelessWidget {

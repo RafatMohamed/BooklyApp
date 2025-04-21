@@ -1,4 +1,5 @@
-name: bookly_app
+name: bookly_app_t
+
 description: "A new Flutter project."
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev

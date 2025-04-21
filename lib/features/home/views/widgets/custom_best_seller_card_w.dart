@@ -1,7 +1,7 @@
-import 'package:bookly_app/core/helper/my_navigator_app.dart';
-import 'package:bookly_app/features/home/views/widgets/custom_image_w.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/helper/my_navigator_app.dart';
 import '../card_details_view.dart';
+import 'custom_image_w.dart';
 import 'details_book_animation.dart';
 
 class CustomCardBestSeller extends StatelessWidget {

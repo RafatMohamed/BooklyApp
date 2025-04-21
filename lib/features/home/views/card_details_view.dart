@@ -1,8 +1,9 @@
-import 'package:bookly_app/core/helper/my_navigator_app.dart';
-import 'package:bookly_app/core/resources/app_padding.dart';
-import 'package:bookly_app/features/home/views/widgets/custom_image_w.dart';
-import 'package:bookly_app/features/home/views/widgets/details_book_animation.dart';
+import 'package:bookly_app_t/features/home/views/widgets/custom_image_w.dart';
+import 'package:bookly_app_t/features/home/views/widgets/details_book_animation.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/helper/my_navigator_app.dart';
+import '../../../core/resources/app_padding.dart';
 
 class CardDetailsView extends StatelessWidget{
   const CardDetailsView({super.key});
