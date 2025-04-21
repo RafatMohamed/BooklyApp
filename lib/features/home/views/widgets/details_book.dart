@@ -21,7 +21,9 @@ class BookDetails extends StatelessWidget{
          overflow: TextOverflow.ellipsis,
          softWrap: true,
        ),
+       SizedBox(height: 10,),
        const Text("J.K.Rowling", style: Styles.textStyle20),
+       SizedBox(height: 10,),
        isDetails
            ? const RateForBook()
            : Row(

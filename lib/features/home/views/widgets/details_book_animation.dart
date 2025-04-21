@@ -12,13 +12,16 @@ class DetailsBookAnimation extends StatefulWidget {
 
 class _DetailsBookAnimationState extends State<DetailsBookAnimation>
     with TickerProviderStateMixin {
+
   late AnimationController animationController;
   late Animation<Offset> animation;
+
   @override
   void initState() {
     initAnimation();
     super.initState();
   }
+
   @override
   void dispose() {
     animationController.dispose();
@@ -37,6 +40,7 @@ class _DetailsBookAnimationState extends State<DetailsBookAnimation>
         )
         :  BookDetails(isDetails: widget.isDetails,);
   }
+
   void initAnimation() {
     animationController = AnimationController(
       vsync: this,
