@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/resources/app_image.dart';
+import 'animation_select_item.dart';
 
 class ListViewHorz extends StatefulWidget {
   const ListViewHorz({super.key});
@@ -11,13 +10,21 @@ class ListViewHorz extends StatefulWidget {
 
 class _ListViewHorzState extends State<ListViewHorz> {
   int isSelectedIndex = 0;
+  ScrollController scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 1 / 4,
+    return AspectRatio(
+      aspectRatio: 1.6,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        controller: ScrollController(),
+        controller: scrollController,
         shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
         itemBuilder: (context, index) {
@@ -30,15 +37,9 @@ class _ListViewHorzState extends State<ListViewHorz> {
                     isSelectedIndex = isSelected ? 0 : index;
                   });
                 },
-                child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 500),
-                    transform: isSelected
-                        ? Matrix4.identity().scaled(1.1)
-                        : Matrix4.identity(),
-                    child:Image.asset(AppImage.imageTest,)
-                ),
+                child: AnimationItemCategory(isSelected: isSelected,),
               ),
-              const SizedBox(width: 5),
+              const SizedBox(width: 32),
             ],
           );
         },
