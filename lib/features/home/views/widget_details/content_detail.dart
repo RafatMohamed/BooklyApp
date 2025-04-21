@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/resources/text_styles.dart';
-import '../widgets/custom_app_bar_widget.dart';
 import '../widgets/custom_image_w.dart';
 import '../widgets/details_book_animation.dart';
 import 'custom_app_bar.dart';

@@ -2,6 +2,7 @@ import 'package:bookly_app_t/core/resources/app_padding.dart';
 import 'package:bookly_app_t/features/home/views/widgets/list_view_vert_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/resources/text_styles.dart';
 import '../../../core/widget/default_text_form_field_app.dart';
 
 class SearchView extends StatelessWidget {
@@ -16,14 +17,13 @@ class SearchView extends StatelessWidget {
             child: Column(
               children: [
                 TextFormFieldApp(
-                  labelText: 'Search for the Books',
+                  labelText: 'Search',
                   hintText: '',
                   onSubmitted: (_) {  },
                   controller: TextEditingController(),
-
-
                 ),
                 const SizedBox(height: 20,),
+                Text("Best Seller", style: Styles.textStyle30.copyWith(fontSize: 24)),
                 Expanded(
                   child: ListView(
                     physics: const BouncingScrollPhysics(),
