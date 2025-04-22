@@ -2,10 +2,11 @@ import 'package:bookly_app_t/features/home/views/widget_details/content_detail.d
 import 'package:bookly_app_t/features/home/views/widgets/list_view_horz_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../core/resources/app_padding.dart';
+import '../data/book_model/book_model.dart';
 
 class CardDetailsView extends StatelessWidget{
-  const CardDetailsView({super.key});
-
+  const CardDetailsView({super.key, required this.homeModel,});
+  final BookModel homeModel;
   @override
   Widget build(BuildContext context){
     return  Scaffold(
@@ -15,9 +16,9 @@ class CardDetailsView extends StatelessWidget{
           child: ListView(
             physics:const BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
-            children:const[
-              ContentDetailsW(),
-              ListViewHorz(),
+            children:[
+              ContentDetailsW(homeModel:homeModel ,),
+              ListViewHorz(homeModel: homeModel),
             ],
           ),
         ),

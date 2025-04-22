@@ -1,10 +1,12 @@
 import 'package:bookly_app_t/features/home/views/widgets/rate_book.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resources/text_styles.dart';
+import '../../data/book_model/book_model.dart';
 
 class BookDetails extends StatelessWidget{
-  const BookDetails({super.key, required this.isDetails});
+  const BookDetails({super.key, required this.isDetails, required this.homeModel});
   final bool isDetails;
+  final BookModel homeModel;
   @override
   Widget build(BuildContext context) {
    return Column(
@@ -14,26 +16,28 @@ class BookDetails extends StatelessWidget{
          ? CrossAxisAlignment.center
          : CrossAxisAlignment.start,
      children: [
-       const Text(
-         "Harry Potter and the Goblet of fire",
+        Text(
+         "${homeModel.volumeInfo?.title}",
          style: Styles.textStyle26,
          maxLines: 2,
          overflow: TextOverflow.ellipsis,
          softWrap: true,
        ),
        const SizedBox(height: 10,),
-       const Text("J.K.Rowling", style: Styles.textStyle20),
+       Text("${homeModel.volumeInfo?.authors?[0]}", style: Styles.textStyle20, maxLines: 1,
+         overflow: TextOverflow.ellipsis,
+         softWrap: true,),
        const SizedBox(height: 10,),
        isDetails
-           ? const RateForBook()
+           ?  RateForBook(homeModel: homeModel,)
            : Row(
          mainAxisAlignment: MainAxisAlignment.spaceBetween,
          children: [
            Text(
-             "500 E£",
+             "For Free E£",
              style: Styles.textStyle30.copyWith(fontSize: 26),
            ),
-        const RateForBook(),
+         RateForBook(homeModel:homeModel ,),
          ],
        ),
      ],

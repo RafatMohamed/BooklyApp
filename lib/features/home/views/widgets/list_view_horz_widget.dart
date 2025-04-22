@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../data/book_model/book_model.dart';
 import 'animation_select_item.dart';
 
 class ListViewHorz extends StatefulWidget {
-  const ListViewHorz({super.key});
-
+  const ListViewHorz({super.key, required this.homeModel});
+  final BookModel homeModel;
   @override
   State<ListViewHorz> createState() => _ListViewHorzState();
 }
@@ -35,7 +36,7 @@ class _ListViewHorzState extends State<ListViewHorz> {
                 isSelectedIndex = isSelected ? 0 : index;
               });
             },
-            child: AnimationItemCategory(isSelected: isSelected),
+            child: AnimationItemCategory(isSelected: isSelected,homeModel: widget.homeModel,),
           );
         },
         itemCount: 5,

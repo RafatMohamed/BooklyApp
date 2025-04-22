@@ -7,11 +7,12 @@ import '../resources/app_radius.dart';
 class DefaultTextButton extends StatelessWidget {
   const DefaultTextButton({
     super.key,
-    required this.text,  this.isButton=true,
+    required this.text,  this.isButton=true, required this.onPressed,
 
   });
   final String text;
   final  bool isButton;
+  final Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -27,7 +28,7 @@ class DefaultTextButton extends StatelessWidget {
                 )
             )
         ),
-        onPressed: (){},
+        onPressed: onPressed,
         child: Text(text, style:isButton? Styles.textStyle18.copyWith(fontFamily: kFontFamilyGSF): Styles.textStyle18.copyWith(color: Colors.black54),),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/resources/text_styles.dart';
+import '../../../home/data/book_model/book_model.dart';
 import '../../../home/views/home_view.dart';
 
 class SplashViewWidget extends StatefulWidget {
@@ -45,7 +46,7 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
     Future.delayed(const Duration(seconds: 2), () {
       if (context.mounted) {
         return AppNavigator.navigatorPushGo(
-            navigatorToPage: () => const HomeView(),
+            navigatorToPage: () => const HomeView(homeModel:BookModel(),),
             transition: Transition.topLevel
         );
       }
