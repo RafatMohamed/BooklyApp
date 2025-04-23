@@ -1,14 +1,14 @@
 import '../../data/book_model/book_model.dart';
 
-class HomeFetchBookState {}
+class HomeFetchNewestBookState {}
 
-final class HomeFetchBookInitial extends HomeFetchBookState {}
-final class HomeFetchBookLoading extends HomeFetchBookState {}
-final class HomeFetchBookSuccess extends HomeFetchBookState {
+final class HomeFetchNewestBookInitial extends HomeFetchNewestBookState {}
+final class HomeFetchNewestBookLoading extends HomeFetchNewestBookState {}
+final class HomeFetchNewestBookSuccess extends HomeFetchNewestBookState {
   List<BookModel> homeModel;
-  HomeFetchBookSuccess({required this.homeModel});
+  HomeFetchNewestBookSuccess({required this.homeModel});
 }
-final class HomeFetchBookFailure extends HomeFetchBookState {
+final class HomeFetchNewestBookFailure extends HomeFetchNewestBookState {
  String error;
-  HomeFetchBookFailure({required this.error});
+  HomeFetchNewestBookFailure({required this.error});
 }

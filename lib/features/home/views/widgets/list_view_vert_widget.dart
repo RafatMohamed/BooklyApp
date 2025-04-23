@@ -10,14 +10,15 @@ class ListViewVert extends StatelessWidget {
   final bool isScroll;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeFetchBookCubit, HomeFetchBookState>(
+    return BlocBuilder<HomeFetchNewestBookCubit, HomeFetchNewestBookState>(
   builder: (context, state) {
-    if(state is HomeFetchBookLoading){
+    if(state is HomeFetchNewestBookLoading){
       return AppNotify.circularProgress();
-    }else if(state is HomeFetchBookFailure){
+    }
+    else if(state is HomeFetchNewestBookFailure){
       return Center(child: Text("Error: ${state.error}"));
     }
-    else if(state is HomeFetchBookSuccess){
+    else if(state is HomeFetchNewestBookSuccess){
 
       return ListView.builder(
         scrollDirection: Axis.vertical,
@@ -25,7 +26,7 @@ class ListViewVert extends StatelessWidget {
         physics: isScroll ? const BouncingScrollPhysics():const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return  Column(
-            children: [CustomCardBestSeller(homeModel:state.homeModel[index] ), const SizedBox(height: 20)],
+            children: [CustomCardBestSeller(homeModel:state.homeModel[index] ,allBooks: state.homeModel,), const SizedBox(height: 20)],
           );
         },
         itemCount: state.homeModel.length,

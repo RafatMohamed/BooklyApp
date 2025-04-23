@@ -21,7 +21,7 @@ class TextFormFieldApp extends StatelessWidget {
     this.textInputAction = TextInputAction.done,
     this.borderDecorationColor = Colors.green,
     this.validator,
-    required this.onSubmitted,
+    required this.onChange,
     required this.controller,
     this.obscureText = false,
     this.suffixIcon,
@@ -45,7 +45,7 @@ class TextFormFieldApp extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final FormFieldValidator? validator;
-  final Function(String) onSubmitted;
+  final Function(String) onChange;
   final TextEditingController controller;
   final Widget? suffixIcon;
 
@@ -65,7 +65,7 @@ class TextFormFieldApp extends StatelessWidget {
         obscureText: obscureText,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,
-        onFieldSubmitted: onSubmitted,
+        onChanged: onChange,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
           floatingLabelBehavior: FloatingLabelBehavior.always,

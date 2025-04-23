@@ -17,7 +17,7 @@ class ContentDetailsW extends StatelessWidget {
       children: [
         const CustomAppBarDetails(),
         const SizedBox(height: 20,),
-        customImage(height: 260,homeModel: homeModel),
+        customImage(height: 260,homeModel: homeModel,width: MediaQuery.sizeOf(context).width*0.5),
         const SizedBox(height: 20,),
         SizedBox(
           width: MediaQuery.sizeOf(context).width*0.6,

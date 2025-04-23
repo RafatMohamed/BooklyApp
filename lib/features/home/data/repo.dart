@@ -7,14 +7,25 @@ import 'book_model/book_model.dart';
 
 class HomeRepo{
   ApiHelper apiHelper=ApiHelper();
-  Future <Either<String,List<BookModel>>> fetcBooks()async{
+  Future <Either<String,List<BookModel>>> fetchNewBooks()async{
     ApiResponse response = await apiHelper.getDioRequest(
-      endPoint: EndPoints.fetchBooks,
+      endPoint: EndPoints.fetchNewestBooks,
     );
-
-    print("RESPONSE STATUS: ${response.status}");
-    print("RESPONSE DATA: ${response.data}");
-    print("RESPONSE MESSAGE: ${response.message}");
+      try {
+        List<BookModel> itemsBook = [];
+        final items = response.data['items'];
+        for (var item in items) {
+          itemsBook.add(BookModel.fromJson(item));
+        }
+        return right(itemsBook);
+      } catch (e) {
+        return left(e.toString());
+      }
+  }
+  Future <Either<String,List<BookModel>>> fetchFutureBooks()async{
+    ApiResponse response = await apiHelper.getDioRequest(
+      endPoint: EndPoints.fetchFutureBooks,
+    );
       try {
         List<BookModel> itemsBook = [];
         final items = response.data['items'];

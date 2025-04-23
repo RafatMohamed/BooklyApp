@@ -4,24 +4,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repo.dart';
 import 'home_fetch_book_state.dart';
 
-class HomeFetchNewestBookCubit extends Cubit<HomeFetchNewestBookState> {
-  HomeFetchNewestBookCubit() : super(HomeFetchNewestBookInitial());
+class HomeFetchFutureBookCubit extends Cubit<HomeFetchFutureBookState> {
+  HomeFetchFutureBookCubit() : super(HomeFetchFutureBookInitial());
 
 
   Future<void> getBooks() async {
-    emit(HomeFetchNewestBookLoading());
+    emit(HomeFetchFutureBookLoading());
     log("Fetching books...");
 
-    var books = await HomeRepo().fetchNewBooks();
+    var books = await HomeRepo().fetchFutureBooks();
 
     books.fold(
           (failure) {
             log("Error occurred: $failure");
-        emit(HomeFetchNewestBookFailure(error: failure));
+        emit(HomeFetchFutureBookFailure(error: failure));
       },
           (bookList) {
             log("Books fetched successfully");
-        emit(HomeFetchNewestBookSuccess(homeModel: bookList));
+        emit(HomeFetchFutureBookSuccess(homeModel: bookList));
       },
     );
   }

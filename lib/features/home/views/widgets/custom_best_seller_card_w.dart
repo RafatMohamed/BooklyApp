@@ -6,15 +6,16 @@ import 'custom_image_w.dart';
 import 'details_book_animation.dart';
 
 class CustomCardBestSeller extends StatelessWidget {
-  const CustomCardBestSeller({super.key, required this.homeModel});
+  const CustomCardBestSeller({super.key, required this.homeModel, required this.allBooks,});
   final BookModel homeModel;
+  final List<BookModel> allBooks;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         AppNavigator.navigatorPushGo(
-          navigatorToPage: () =>  CardDetailsView(homeModel:homeModel ,),
+          navigatorToPage: () =>  CardDetailsView(homeModel:homeModel ,allBooks: allBooks,),
         );
       },
       child: Container(
@@ -31,7 +32,7 @@ class CustomCardBestSeller extends StatelessWidget {
         width: double.infinity,
         child: Row(
           children: [
-            customImage(homeModel: homeModel),
+            customImage(homeModel: homeModel,width: 100,),
             const SizedBox(width: 14),
              Expanded(
               child: DetailsBookAnimation(homeModel: homeModel,),

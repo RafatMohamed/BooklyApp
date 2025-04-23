@@ -14,7 +14,7 @@ class AnimationItemCategory extends StatelessWidget {
       duration: const Duration(milliseconds: 500),
       transform:
           isSelected ? Matrix4.identity().scaled(1.1) : Matrix4.identity(),
-      child: isSelected ? customImage(homeModel: homeModel) : Center(child: customImage(homeModel: homeModel)),
+      child: isSelected ? customImageFuture(width:100,homeModel: homeModel) : Center(child: customImageFuture(width:100,homeModel: homeModel)),
     );
   }
 }

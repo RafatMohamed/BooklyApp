@@ -24,7 +24,6 @@ class ApiHelper {
          log('Method: ${options.method}');
          log('Headers: ${options.headers}');
          log('Data: ${options.data}');
-
         return handler.next(options);
       },
     ),
