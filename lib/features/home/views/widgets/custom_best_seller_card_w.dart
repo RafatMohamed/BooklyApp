@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/helper/my_navigator_app.dart';
+import '../../../../core/resources/app_color.dart';
 import '../../data/book_model/book_model.dart';
 import '../card_details_view.dart';
 import 'custom_image_w.dart';
@@ -21,10 +22,11 @@ class CustomCardBestSeller extends StatelessWidget {
       child: Container(
         padding: const EdgeInsetsDirectional.only(end: 16),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
+          gradient:  LinearGradient(
             end: AlignmentDirectional.topCenter,
             begin: AlignmentDirectional.bottomEnd,
-            colors: [Colors.white10, Colors.black],
+            colors: [AppColor(context).whiteColor.withValues(alpha:0.7) ,
+              AppColor(context).blackColor.withValues(alpha:0.7)],
           ),
           borderRadius: BorderRadius.circular(16),
         ),

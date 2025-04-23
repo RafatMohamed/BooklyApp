@@ -1,3 +1,4 @@
+import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:bookly_app_t/core/resources/app_padding.dart';
 import 'package:bookly_app_t/features/search/model/search_cubit/search_cubit.dart';
 import 'package:bookly_app_t/features/search/views/widgets/list_view_search.dart';
@@ -23,6 +24,7 @@ class SearchView extends StatelessWidget {
                     TextFormFieldApp(
                       labelText: 'Search',
                       hintText: '',
+                      labelColor: AppColor(context).whiteColor,
                       onChange: (value) {
                         cubit.searchController.text=value;
                         cubit.getBooks(query: value);
@@ -30,7 +32,8 @@ class SearchView extends StatelessWidget {
                       controller: cubit.searchController,
                     ),
                     const SizedBox(height: 20,),
-                    Text("Best Seller", style: Styles.textStyle30.copyWith(fontSize: 24)),
+                    Text("Best Seller", style: Styles(context).textStyle30.copyWith(fontSize: 24)),
+                    const SizedBox(height: 10,),
                     Expanded(
                       child: ListView(
                         physics: const BouncingScrollPhysics(),

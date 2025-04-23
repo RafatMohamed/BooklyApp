@@ -26,7 +26,6 @@ class ContentDetailsW extends StatelessWidget {
         const SizedBox(height: 24,),
          CustomTextButt(bookModel: homeModel),
         const SizedBox(height: 24,),
-        Align(alignment: AlignmentDirectional.centerStart,child: Text("you can also Like: ", style: Styles.textStyle30.copyWith(fontSize: 24))),
         const SizedBox(height: 16,),
       ],
     );

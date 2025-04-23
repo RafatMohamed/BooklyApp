@@ -18,7 +18,7 @@ class ListViewHome extends StatelessWidget {
            ListViewHorz(homeModel: homeModel,),
           const SizedBox(height: 20),
           Text("Best Seller",
-              style: Styles.textStyle30.copyWith(fontSize: 24)),
+              style: Styles(context).textStyle30.copyWith(fontSize: 24)),
           const SizedBox(height: 10),
           Padding(padding: AppPadding.e20, child: const ListViewVert()),
         ],

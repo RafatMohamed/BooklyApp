@@ -18,13 +18,13 @@ class BookDetails extends StatelessWidget{
      children: [
         Text(
          "${homeModel.volumeInfo?.title}",
-         style: Styles.textStyle26,
+         style: Styles(context).textStyle26,
          maxLines: 2,
          overflow: TextOverflow.ellipsis,
          softWrap: true,
        ),
        const SizedBox(height: 10,),
-       Text("${homeModel.volumeInfo?.authors?[0]}", style: Styles.textStyle20, maxLines: 1,
+       Text("${homeModel.volumeInfo?.authors?[0]}", style: Styles(context).textStyle20, maxLines: 1,
          overflow: TextOverflow.ellipsis,
          softWrap: true,),
        const SizedBox(height: 10,),
@@ -35,7 +35,7 @@ class BookDetails extends StatelessWidget{
          children: [
            Text(
              "For Free E£",
-             style: Styles.textStyle30.copyWith(fontSize: 26),
+             style: Styles(context).textStyle30.copyWith(fontSize: 26),
            ),
          RateForBook(homeModel:homeModel ,),
          ],

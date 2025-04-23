@@ -1,39 +1,50 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../constant/app_constant.dart';
+import 'app_color.dart';
 
-abstract class Styles {
-  static const textStyle18 = TextStyle(
+class Styles {
+  final BuildContext context;
+  final AppColor appColor;
+
+  Styles(this.context) : appColor = AppColor(context);
+
+  TextStyle get textStyle18 => TextStyle(
     fontSize: 18,
-      fontWeight: FontWeight.w600,
-      color: Colors.white70
+    fontWeight: FontWeight.w600,
+    color: appColor.whiteColor.withOpacity(0.7),
   );
-  static const textStyle20 = TextStyle(
+
+  TextStyle get textStyle20 => TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.normal,
-    color: Colors.white70
+    color: appColor.whiteColor.withOpacity(0.7),
   );
-  static const textStyle26 = TextStyle(
-      fontSize: 26,
-      fontWeight: FontWeight.w600,
-      color: Colors.white
+
+  TextStyle get textStyle26 => TextStyle(
+    fontSize: 26,
+    fontWeight: FontWeight.w600,
+    color: appColor.whiteColor,
   );
-  static const textStyle30 = TextStyle(
+
+  TextStyle get textStyle30 => TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.w900,
     fontFamily: kFontFamilyGSF,
-    color: Colors.white
+    color: appColor.whiteColor,
   );
-  static const textStyle14 = TextStyle(
+
+  TextStyle get textStyle14 => TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
+    color: appColor.whiteColor,
   );
 
-  static const textStyle16 = TextStyle(
+  TextStyle get textStyle16 => TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
-      color: Colors.white60
+    color: appColor.whiteColor.withOpacity(0.6),
   );
 }
-
-const TextStyle textStyle = TextStyle();

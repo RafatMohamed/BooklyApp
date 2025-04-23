@@ -1,4 +1,5 @@
 import 'package:bookly_app_t/core/constant/app_constant.dart';
+import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:bookly_app_t/core/resources/text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class DefaultTextButton extends StatelessWidget {
     return Expanded(
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: isButton ? Colors.deepOrangeAccent:Colors.white,
+          backgroundColor: isButton ? Colors.deepOrangeAccent:AppColor(context).whiteColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadiusDirectional.only(
                  bottomEnd : isButton ? AppRadius.rC16 : const Radius.circular(0) ,
@@ -29,7 +30,7 @@ class DefaultTextButton extends StatelessWidget {
             )
         ),
         onPressed: onPressed,
-        child: Text(text, style:isButton? Styles.textStyle18.copyWith(fontFamily: kFontFamilyGSF): Styles.textStyle18.copyWith(color: Colors.black54),),
+        child: Text(text, style:isButton? Styles(context).textStyle18.copyWith(fontFamily: kFontFamilyGSF): Styles(context).textStyle18.copyWith(color:AppColor(context).blackColor),),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:flutter/material.dart';
 
 class TextFormFieldApp extends StatelessWidget {
@@ -55,7 +56,7 @@ class TextFormFieldApp extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(radius),
-        border: Border.all(color: Colors.white, width: 2),
+        border: Border.all(color: AppColor(context).whiteColor, width: 2),
       ),
       padding: const EdgeInsets.all(8),
       width: double.infinity,

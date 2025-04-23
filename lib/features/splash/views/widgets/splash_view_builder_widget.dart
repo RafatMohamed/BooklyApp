@@ -38,7 +38,7 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
       builder: (context, child) {
         return SlideTransition(position: animation, child: child);
       },
-      child: const Text("Read Free Books", style: Styles.textStyle18),
+      child:  Text("Read Free Books", style: Styles(context).textStyle18),
     );
 
   }

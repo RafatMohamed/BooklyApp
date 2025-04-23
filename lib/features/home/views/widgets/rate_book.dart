@@ -18,10 +18,10 @@ class RateForBook extends StatelessWidget {
         const SizedBox(width: 4),
         Text(
           '${homeModel.volumeInfo?.averageRating?.round() ?? 0}',
-          style: Styles.textStyle26.copyWith(fontSize: 18),
+          style: Styles(context).textStyle26.copyWith(fontSize: 18),
         ),
         const SizedBox(width: 4),
-         Text('(${homeModel.volumeInfo?.ratingsCount ?? 0 })', style: Styles.textStyle18),
+         Text('(${homeModel.volumeInfo?.ratingsCount ?? 0 })', style: Styles(context).textStyle18),
       ],
     );
   }

@@ -17,10 +17,11 @@ class CustomNabBar extends StatelessWidget {
         child: Container(
           padding: const EdgeInsetsDirectional.all(16),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
+            gradient: LinearGradient(
               end: AlignmentDirectional.topStart,
               begin: AlignmentDirectional.bottomEnd,
-              colors: [Colors.white70, Colors.black87],
+              colors:  [AppColor(context).whiteColor.withValues(alpha:0.7) ,
+                AppColor(context).blackColor.withValues(alpha:0.7)],
             ),
             borderRadius: BorderRadius.circular(40),
           ),
@@ -31,17 +32,17 @@ class CustomNabBar extends StatelessWidget {
               IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.home_max),
-                highlightColor: AppColor.highlightColor,
+                highlightColor: AppColor(context).highlightColor,
               ),
               IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.area_chart),
-                highlightColor: AppColor.highlightColor,
+                highlightColor: AppColor(context).highlightColor,
               ),
               IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.music_video_sharp),
-                highlightColor: AppColor.highlightColor,
+                highlightColor: AppColor(context).highlightColor,
               ),
               IconButton(
                 onPressed: () {},
@@ -53,7 +54,7 @@ class CustomNabBar extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                highlightColor: AppColor.highlightColor,
+                highlightColor: AppColor(context).highlightColor,
               ),
             ],
           ),
