@@ -20,7 +20,7 @@ class ListViewHome extends StatelessWidget {
           Text("Best Seller",
               style: Styles(context).textStyle30.copyWith(fontSize: 24)),
           const SizedBox(height: 10),
-          Padding(padding: AppPadding.e20, child: const ListViewVert()),
+          Padding(padding: AppPadding.e20, child:  ListViewVert(bookModel: homeModel,)),
         ],
       ),
     );

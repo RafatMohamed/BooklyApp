@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/resources/text_styles.dart';
 import '../../../home/data/book_model/book_model.dart';
 import '../../../home/views/home_view.dart';
@@ -15,6 +12,7 @@ class SplashViewWidget extends StatefulWidget {
 
 class _SplashViewWidgetState extends State<SplashViewWidget>
     with TickerProviderStateMixin {
+   bool isBack =false;
   late AnimationController animationController;
   late Animation<Offset> animation;
   @override
@@ -23,7 +21,6 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
     initAnimation();
     goToHome();
   }
-
 
   @override
   void dispose() {
@@ -38,18 +35,21 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
       builder: (context, child) {
         return SlideTransition(position: animation, child: child);
       },
-      child:  Text("Read Free Books", style: Styles(context).textStyle18),
+      child: Text("Read Free Books", style: Styles(context).textStyle18),
     );
-
   }
+
   void goToHome() {
+    if(isBack) return;
+    isBack=true;
     Future.delayed(const Duration(seconds: 2), () {
-      if (context.mounted) {
-        return AppNavigator.navigatorPushGo(
-            navigatorToPage: () => const HomeView(homeModel:BookModel(),),
-            transition: Transition.topLevel
-        );
-      }
+      return Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) {
+            return const HomeView(homeModel: BookModel());
+          },
+        ),
+      );
     });
   }
 

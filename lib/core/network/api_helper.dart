@@ -13,9 +13,9 @@ class ApiHelper {
   }
   Dio dio = Dio(
     BaseOptions(
-      connectTimeout: const Duration(seconds: 10),
-      sendTimeout: const Duration(seconds: 12),
-      receiveTimeout: const Duration(seconds: 15),
+      connectTimeout: const Duration(seconds: 2),
+      sendTimeout: const Duration(seconds: 4),
+      receiveTimeout: const Duration(seconds: 5),
     ),
   )..interceptors.add(
     InterceptorsWrapper(
@@ -44,26 +44,10 @@ class ApiHelper {
       );
       return ApiResponse.fromResponse(response);
     } catch (e) {
-      return ApiResponse.fromError(e);
+      return ApiResponse.fromError(e.toString());
     }
   }
 
-// class ApiHelper{
-//   Dio dio=Dio(
-//     BaseOptions(
-//       baseUrl: EndPoints.baseUrl,
-//     )
-//   );
-//
-//   Future<ApiResponse> gitDio({required String endPoint })async{
-//    var response = await dio.get(endPoint,);
-//    try{
-//      return ApiResponse.fromResponse(response);
-//    }catch(e){
-//      return ApiResponse.fromError(e);
-//    }
-// }
-// }
 
 
 }

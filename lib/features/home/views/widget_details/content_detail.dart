@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/resources/text_styles.dart';
 import '../../data/book_model/book_model.dart';
 import '../widgets/custom_image_w.dart';
 import '../widgets/details_book_animation.dart';

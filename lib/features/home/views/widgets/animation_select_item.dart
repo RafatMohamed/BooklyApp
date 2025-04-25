@@ -10,16 +10,12 @@ class AnimationItemCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      decoration: BoxDecoration(
-        gradient: RadialGradient(colors: [AppColor(context).whiteColor.withValues(alpha:0.7) ,
-          AppColor(context).blackColor.withValues(alpha:0.7)]),
-      ),
       height: MediaQuery.sizeOf(context).height * 0.2,
       width: MediaQuery.sizeOf(context).width * 0.3,
       duration: const Duration(milliseconds: 500),
       transform:
           isSelected ? Matrix4.identity().scaled(1.1) : Matrix4.identity(),
-      child: isSelected ? customImageFuture(width:100,homeModel: homeModel) : Center(child: customImageFuture(width:100,homeModel: homeModel)),
+      child: isSelected ? customImage(width:100,homeModel: homeModel) : Center(child: customImage(width:100,homeModel: homeModel)),
     );
   }
 }

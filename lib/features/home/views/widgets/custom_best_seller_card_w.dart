@@ -1,3 +1,4 @@
+import 'package:bookly_app_t/core/resources/text_styles.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/resources/app_color.dart';
@@ -7,9 +8,10 @@ import 'custom_image_w.dart';
 import 'details_book_animation.dart';
 
 class CustomCardBestSeller extends StatelessWidget {
-  const CustomCardBestSeller({super.key, required this.homeModel, required this.allBooks,});
+  const CustomCardBestSeller({super.key, required this.homeModel, required this.allBooks,  this.isLoading=false,});
   final BookModel homeModel;
   final List<BookModel> allBooks;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class CustomCardBestSeller extends StatelessWidget {
         ),
         height: MediaQuery.sizeOf(context).height * 1 / 5.5,
         width: double.infinity,
-        child: Row(
+        child:isLoading? Center(child: Text("Waiting.....",textAlign: TextAlign.center,style: Styles(context).textStyle30,),):Row(
           children: [
             customImage(homeModel: homeModel,width: 100,),
             const SizedBox(width: 14),

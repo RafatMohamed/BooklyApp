@@ -20,7 +20,7 @@ class Styles {
   TextStyle get textStyle20 => TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.normal,
-    color: appColor.whiteColor.withOpacity(0.7),
+    color: appColor.whiteColor.withValues(alpha: 0.7),
   );
 
   TextStyle get textStyle26 => TextStyle(
