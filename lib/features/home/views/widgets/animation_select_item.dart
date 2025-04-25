@@ -1,4 +1,3 @@
-import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:flutter/material.dart';
 import '../../data/book_model/book_model.dart';
 import 'custom_image_w.dart';

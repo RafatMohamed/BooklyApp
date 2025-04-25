@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/resources/text_styles.dart';
-import '../../../home/data/book_model/book_model.dart';
-import '../../../home/views/home_view.dart';
+import '../../on_boarding/views/on_boarding_view.dart';
 
 class SplashViewWidget extends StatefulWidget {
   const SplashViewWidget({super.key});
@@ -12,14 +11,14 @@ class SplashViewWidget extends StatefulWidget {
 
 class _SplashViewWidgetState extends State<SplashViewWidget>
     with TickerProviderStateMixin {
-   bool isBack =false;
+  bool isBack = false;
   late AnimationController animationController;
   late Animation<Offset> animation;
   @override
   void initState() {
     super.initState();
     initAnimation();
-    goToHome();
+    goToHome(context);
   }
 
   @override
@@ -39,17 +38,19 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
     );
   }
 
-  void goToHome() {
-    if(isBack) return;
-    isBack=true;
+  void goToHome(context) {
+    if (isBack) return;
+    isBack = true;
     Future.delayed(const Duration(seconds: 2), () {
-      return Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) {
-            return const HomeView(homeModel: BookModel());
-          },
-        ),
-      );
+      if (context.mounted) {
+        return Navigator.of( context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) {
+              return const OnBoardingView();
+            },
+          ),
+        );
+      }
     });
   }
 

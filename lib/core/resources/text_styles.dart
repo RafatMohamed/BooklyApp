@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../constant/app_constant.dart';
@@ -14,7 +12,7 @@ class Styles {
   TextStyle get textStyle18 => TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
-    color: appColor.whiteColor.withOpacity(0.7),
+    color: appColor.whiteColor.withValues(alpha: 0.7),
   );
 
   TextStyle get textStyle20 => TextStyle(
@@ -45,6 +43,6 @@ class Styles {
   TextStyle get textStyle16 => TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
-    color: appColor.whiteColor.withOpacity(0.6),
+    color: appColor.whiteColor.withValues(alpha: 0.6),
   );
 }

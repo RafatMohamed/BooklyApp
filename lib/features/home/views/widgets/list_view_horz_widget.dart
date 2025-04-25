@@ -1,6 +1,4 @@
 import 'package:bookly_app_t/core/helper/my_navigator_app.dart';
-import 'package:bookly_app_t/core/helper/notify_app.dart';
-import 'package:bookly_app_t/core/resources/app_image.dart';
 import 'package:bookly_app_t/features/home/model/home_future_cubit/home_fetch_book_cubit.dart';
 import 'package:bookly_app_t/features/home/model/home_future_cubit/home_fetch_book_state.dart';
 import 'package:flutter/material.dart';
