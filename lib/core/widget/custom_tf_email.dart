@@ -1,51 +1,46 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../../features/login/logic/login_cubit.dart';
-import '../../features/register/logic/register_cubit.dart';
 import 'default_text_form_field_app.dart';
 
 Widget customTextFormEmailLogin(context) {
-  final cubit = LoginCubit.get(context);
   return TextFormFieldApp(
     suffixIcon: const Icon(Icons.email, color: Colors.white),
     validator: (value) {
       if (value == null || value.isEmpty) {
-        return "Please enter your email";
+        return "pleaseEnterYourEmail".tr();
       } else if (!value.contains("@")) {
-        return "Please enter a valid email";
+        return "pleaseEnterValidEmail".tr();
       }
       return null;
     },
     textInputAction: TextInputAction.next,
     keyboardType: TextInputType.emailAddress,
-    labelText: "Email",
-    hintText: 'Please enter your email',
+    labelText: "email".tr(),
+    hintText: 'pleaseEnterYourEmail'.tr(),
     onSubmitted: (value) {
-      cubit.emailController.text = value;
     },
-    controller: cubit.emailController,
+    controller:TextEditingController(),
+    onChange: (String ) {  },
   );
 }
 
 Widget customTextFormEmailRegister(context) {
-  final cubit = RegisterCubit.get(context);
   return TextFormFieldApp(
     suffixIcon: const Icon(Icons.email, color: Colors.white),
     validator: (value) {
       if (value == null || value.isEmpty) {
-        return "Please enter your email";
+        return "pleaseEnterYourEmail".tr();
       } else if (!value.contains("@")) {
-        return "Please enter a valid email";
+        return "pleaseEnterValidEmail".tr();
       }
       return null;
     },
     textInputAction: TextInputAction.next,
     keyboardType: TextInputType.emailAddress,
-    labelText: "Email",
-    hintText: 'Please enter your email',
-    onSubmitted: (value) {
-      cubit.emailController.text = value;
-    },
-    controller: cubit.emailController,
+    labelText: "email".tr(),
+    hintText: 'pleaseEnterYourEmail'.tr(),
+    onSubmitted: (_) {},
+    controller:TextEditingController(),
+    onChange: (String ) {  },
   );
 }
