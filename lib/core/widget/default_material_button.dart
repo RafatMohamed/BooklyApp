@@ -1,3 +1,5 @@
+import 'package:bookly_app_t/core/resources/app_color.dart';
+import 'package:bookly_app_t/core/resources/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DefaultMaterialButton extends StatelessWidget {
@@ -15,11 +17,12 @@ class DefaultMaterialButton extends StatelessWidget {
       height: 50,
       minWidth: double.infinity,
       onPressed: onPressed,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation:5,
+      color: AppColor(context).blackColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),side: BorderSide(style: BorderStyle.solid,color: AppColor(context).whiteColor,width: 0.2)),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+        style: Styles(context).textStyle20.copyWith(color: AppColor(context).whiteColor),
       ),
     );
   }

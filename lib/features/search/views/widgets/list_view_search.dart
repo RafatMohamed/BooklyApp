@@ -1,5 +1,6 @@
 import 'package:bookly_app_t/features/search/model/search_cubit/search_cubit.dart';
 import 'package:bookly_app_t/features/search/model/search_cubit/search_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +13,7 @@ class ListViewSearch extends StatelessWidget {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
          if(state is SearchStateFailure){
-          return Center(child: Text("Error: ${state.error}"));
+          return Center(child: Text("${"error".tr()}${state.error}"));
         }
         else if(state is SearchStateSuccess){
           return ListView.builder(

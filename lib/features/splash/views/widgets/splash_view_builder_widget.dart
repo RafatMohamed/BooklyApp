@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resources/text_styles.dart';
 import '../../on_boarding/views/on_boarding_view.dart';
@@ -34,7 +35,8 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
       builder: (context, child) {
         return SlideTransition(position: animation, child: child);
       },
-      child: Text("Read Free Books", style: Styles(context).textStyle18),
+      child: Text("readFreeBooks".tr(),
+          style: Styles(context).textStyle18),
     );
   }
 

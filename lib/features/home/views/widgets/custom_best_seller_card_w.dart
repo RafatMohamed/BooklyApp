@@ -1,4 +1,5 @@
 import 'package:bookly_app_t/core/resources/text_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/resources/app_color.dart';
@@ -17,8 +18,9 @@ class CustomCardBestSeller extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppNavigator.navigatorPushGo(
-          navigatorToPage: () =>  CardDetailsView(homeModel:homeModel ,allBooks: allBooks,),
+        AppNavigator.navigatorPush(
+          context: context,
+          navigatorToPage:  CardDetailsView(homeModel:homeModel ,allBooks: allBooks,),
         );
       },
       child: Container(
@@ -34,7 +36,7 @@ class CustomCardBestSeller extends StatelessWidget {
         ),
         height: MediaQuery.sizeOf(context).height * 1 / 5.5,
         width: double.infinity,
-        child:isLoading? Center(child: Text("Waiting.....",textAlign: TextAlign.center,style: Styles(context).textStyle30,),):Row(
+        child:isLoading? Center(child: Text("waiting".tr(),textAlign: TextAlign.center,style: Styles(context).textStyle30,),):Row(
           children: [
             customImage(homeModel: homeModel,width: 100,),
             const SizedBox(width: 14),

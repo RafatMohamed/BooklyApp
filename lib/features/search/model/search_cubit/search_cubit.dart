@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../home/data/book_model/book_model.dart';
@@ -10,15 +11,15 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchStateInitial());
   TextEditingController searchController= TextEditingController();
   void getBooks({required String query}) async {
-    log("Fetching books...");
+    log("fetching".tr());
     var books = await SearchRepo().getSearch(query: query);
     books.fold(
           (failure) {
-            log("Error occurred: $failure");
+            log("${"errorOccurred".tr()} $failure".tr());
         emit(SearchStateFailure(error: failure));
       },
           (bookList) {
-            log("Books fetched successfully");
+            log("booksFetchedSuccessfully".tr());
         emit(SearchStateSuccess(homeModel: bookList));
       },
     );

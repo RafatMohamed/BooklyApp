@@ -1,8 +1,11 @@
 import 'package:bookly_app_t/core/resources/app_color.dart';
+import 'package:bookly_app_t/features/home/data/book_model/book_model.dart';
 import 'package:bookly_app_t/features/splash/on_boarding/widgets/list_img.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../../home/views/home_view.dart';
 import '../../../register/views/register_view.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -40,7 +43,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 height: size.height,
                 autoPlay: true,
                 enlargeCenterPage: true,
-                viewportFraction: 0.9,
+                viewportFraction: 1,
                 onPageChanged: (index, reason) {
                   setState(() {
                     currentIndex = index;
@@ -52,7 +55,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
             Positioned(
               top: 16,
-              right: 16,
+              right:context.locale == const Locale("en") ? 16:null,
+              left: context.locale == const Locale("ar") ? 16:null,
               child: TextButton(
                 onPressed: () {
                   Navigator.pushReplacement(
@@ -64,11 +68,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     ),
                   );
                 },
+                style: TextButton.styleFrom(
+                  backgroundColor: AppColor(context).blackColor.withValues(alpha: 0.5),
+                ),
                 child: Text(
-                  'Skip',
+                  'skip'.tr(),
                   style: TextStyle(
-                    color: AppColor(context).highlightColor,
-                    fontSize: 16,
+                    color: AppColor(context).whiteColor,
+                    fontSize: 14,
                   ),
                 ),
               ),
@@ -100,7 +107,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
             Positioned(
               bottom: 0,
-              left: 16,
+              left:context.locale == const Locale("en") ? 16:null,
+              right: context.locale == const Locale("ar") ? 16:null,
               child: currentIndex>0 ?TextButton(
                 onPressed:
                     () {
@@ -112,13 +120,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   }
                     },
                 style: TextButton.styleFrom(
-                  backgroundColor: AppColor(context).highlightColor,
+                  backgroundColor: AppColor(context).blackColor.withValues(alpha: 0.5),
                 ),
                 child: Text(
-                  currentIndex > 0 ? "previous":"" ,
+                  currentIndex > 0 ? "previous".tr():"" ,
                   style: TextStyle(
                     color: AppColor(context).whiteColor,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
               ): const Text(""),
@@ -126,7 +134,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
             Positioned(
               bottom: 0,
-              right: 16,
+              right:context.locale == const Locale("en") ? 16:null,
+              left: context.locale == const Locale("ar") ? 16:null,
               child: TextButton(
                 onPressed: () {
                   if (currentIndex == imageListB.length -1) {
@@ -146,13 +155,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   }
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: AppColor(context).highlightColor,
+                  backgroundColor: AppColor(context).blackColor.withValues(alpha: 0.5),
                 ),
                 child: Text(
-                  currentIndex == imageListB.length - 1 ? "login " :'Next',
+                  currentIndex == imageListB.length - 1 ? "login".tr() :'next'.tr(),
                   style: TextStyle(
                     color: AppColor(context).whiteColor,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
               ),

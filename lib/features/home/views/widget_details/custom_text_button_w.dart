@@ -1,4 +1,5 @@
 import 'package:bookly_app_t/features/home/data/book_model/book_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,7 +14,7 @@ class CustomTextButt extends StatelessWidget{
       children: [
         DefaultTextButton(
           onPressed: () {},
-          text: "For Free E£",
+          text: "forFree".tr(),
           isButton: false,
         )  ,
         DefaultTextButton(
@@ -21,7 +22,7 @@ class CustomTextButt extends StatelessWidget{
           final Uri url= Uri.parse("${bookModel.volumeInfo?.previewLink}");
                 await launchUrl(url, mode: LaunchMode.externalApplication); // Opens in browser
           },
-          text: "Free Preview",
+          text: "freePreview".tr(),
           isButton: true,
         )
       ],

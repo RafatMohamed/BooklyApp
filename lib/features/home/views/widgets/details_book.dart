@@ -1,4 +1,5 @@
 import 'package:bookly_app_t/features/home/views/widgets/rate_book.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resources/text_styles.dart';
 import '../../data/book_model/book_model.dart';
@@ -17,6 +18,7 @@ class BookDetails extends StatelessWidget{
          : CrossAxisAlignment.start,
      children: [
         Text(
+          textAlign:context.locale.languageCode == 'ar' ? TextAlign.end : TextAlign.start,
          "${homeModel.volumeInfo?.title}",
          style: Styles(context).textStyle26,
          maxLines: 2,
@@ -24,9 +26,12 @@ class BookDetails extends StatelessWidget{
          softWrap: true,
        ),
        const SizedBox(height: 10,),
-       Text("${homeModel.volumeInfo?.authors?[0]}", style: Styles(context).textStyle20, maxLines: 1,
+       Text(
+         textAlign:context.locale.languageCode == 'ar' ? TextAlign.end : TextAlign.start,
+         "${homeModel.volumeInfo?.authors?[0]}", style: Styles(context).textStyle20, maxLines: 1,
          overflow: TextOverflow.ellipsis,
-         softWrap: true,),
+         softWrap: true,
+       ),
        const SizedBox(height: 10,),
        isDetails
            ?  RateForBook(homeModel: homeModel,)
@@ -34,7 +39,7 @@ class BookDetails extends StatelessWidget{
          mainAxisAlignment: MainAxisAlignment.spaceBetween,
          children: [
            Text(
-             "For Free E£",
+             "forFree".tr(),
              style: Styles(context).textStyle30.copyWith(fontSize: 26),
            ),
          RateForBook(homeModel:homeModel ,),

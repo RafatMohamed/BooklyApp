@@ -18,7 +18,6 @@ abstract class AppNavigator {
           const endOffset = Offset.zero;
           final offsetTween = Tween(begin: beginOffset, end: endOffset);
 
-          // Fade in
           final opacityTween = Tween<double>(begin: 0.0, end: 1.0);
 
           return SlideTransition(
@@ -39,15 +38,4 @@ abstract class AppNavigator {
     return Navigator.pop(context);
   }
 
-  static void navigatorPushGo({
-    required Widget Function() navigatorToPage,
-    Transition transition = Transition.fadeIn,
-    Duration duration = kTranstionDuration,
-  }) {
-    Get.to(
-      navigatorToPage,
-      transition: transition,
-      duration: duration,
-    );
-  }
 }

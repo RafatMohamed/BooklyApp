@@ -1,5 +1,6 @@
 import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:bookly_app_t/features/home/data/book_model/book_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
@@ -36,7 +37,7 @@ class ListViewVert extends StatelessWidget {
       );
     }
     else if(state is HomeFetchNewestBookFailure){
-      return Center(child: Text("Error: ${state.error}"));
+      return Center(child: Text("${"error".tr()} ${state.error}".tr()));
     }
     else if(state is HomeFetchNewestBookSuccess){
 

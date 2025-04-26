@@ -25,6 +25,7 @@ class SearchView extends StatelessWidget {
                     TextFormFieldApp(
                       labelText: 'search'.tr(),
                       hintText: '',
+                      labelColor: AppColor(context).whiteColor,
                       onChange: (value) {
                         cubit.searchController.text=value;
                         cubit.getBooks(query: value);

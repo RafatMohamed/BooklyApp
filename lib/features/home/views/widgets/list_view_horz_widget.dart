@@ -1,6 +1,7 @@
 import 'package:bookly_app_t/core/helper/my_navigator_app.dart';
 import 'package:bookly_app_t/features/home/model/home_future_cubit/home_fetch_book_cubit.dart';
 import 'package:bookly_app_t/features/home/model/home_future_cubit/home_fetch_book_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/resources/app_color.dart';
@@ -52,7 +53,7 @@ class _ListViewHorzState extends State<ListViewHorz> {
             );
           }
           else if(state is HomeFetchFutureBookFailure){
-            return Center(child: Text("Error: ${state.error}"));
+            return Center(child: Text(" ${"error".tr()}${state.error}".tr()));
           }
           else if(state is HomeFetchFutureBookSuccess){
             return ListView.builder(
@@ -69,9 +70,9 @@ class _ListViewHorzState extends State<ListViewHorz> {
                     });
                   },
                   onDoubleTap: (){
-                    AppNavigator.navigatorPushGo(navigatorToPage: () {
-                      return  CardDetailsView(homeModel:state.homeModel[index],allBooks: state.homeModel,);
-                    },);
+                    AppNavigator.navigatorPush(context: context,navigatorToPage:
+                        CardDetailsView(homeModel:state.homeModel[index],allBooks: state.homeModel,)
+                    );
                   },
                   child: AnimationItemCategory(
                     isSelected: isSelected, homeModel: state.homeModel[index],),

@@ -8,7 +8,6 @@ class TextFormFieldApp extends StatelessWidget {
     required this.labelText,
     this.labelFontWeight = FontWeight.normal,
     this.labelFontSize = 19,
-    this.labelColor = Colors.white,
     this.labelFontStyle = FontStyle.normal,
     this.labelTextAlign = TextAlign.start,
     required this.hintText,
@@ -23,6 +22,7 @@ class TextFormFieldApp extends StatelessWidget {
     this.borderDecorationColor = Colors.green,
     this.validator,
     required this.onChange,
+    this.onSubmitted,
     required this.controller,
     this.obscureText = false,
     this.suffixIcon,
@@ -39,7 +39,6 @@ class TextFormFieldApp extends StatelessWidget {
   final String labelText;
   final FontWeight labelFontWeight;
   final double labelFontSize;
-  final Color labelColor;
   final FontStyle? labelFontStyle;
   final TextAlign? labelTextAlign;
   final double radius;
@@ -47,11 +46,13 @@ class TextFormFieldApp extends StatelessWidget {
   final TextInputAction textInputAction;
   final FormFieldValidator? validator;
   final Function(String) onChange;
+  final Function(String)? onSubmitted;
   final TextEditingController controller;
   final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
+    final Color labelColor=AppColor(context).whiteColor;
     return Container(
       decoration: BoxDecoration(
         color: Colors.transparent,
@@ -67,6 +68,7 @@ class TextFormFieldApp extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,
         onChanged: onChange,
+        onFieldSubmitted: onSubmitted,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
           floatingLabelBehavior: FloatingLabelBehavior.always,

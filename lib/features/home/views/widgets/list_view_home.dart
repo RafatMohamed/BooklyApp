@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../../core/resources/app_padding.dart';
 import '../../../../core/resources/text_styles.dart';
@@ -17,7 +18,7 @@ class ListViewHome extends StatelessWidget {
         children: [
            ListViewHorz(homeModel: homeModel,),
           const SizedBox(height: 20),
-          Text("Best Seller",
+          Text("bestSeller".tr(),
               style: Styles(context).textStyle30.copyWith(fontSize: 24)),
           const SizedBox(height: 10),
           Padding(padding: AppPadding.e20, child:  ListViewVert(bookModel: homeModel,)),
