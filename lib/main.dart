@@ -1,19 +1,49 @@
+import 'package:bookly_app_t/app/logic/language_cubit/language_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'app/my_app.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:bookly_app_t/app/my_app.dart';
+
+import 'app/logic/language_cubit/language_state.dart';
 import 'core/constant/app_constant.dart';
 import 'core/observe_model.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
+
+  // Initialize Hive
   await Hive.initFlutter();
-  Bloc.observer = DefaultObserve();
   await Hive.openBox(kOpenBoxSettingThem);
-  Bloc.observer=DefaultObserve();
 
-  runApp(const BookApp());
+
+  final directory = await getApplicationDocumentsDirectory();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: HydratedStorageDirectory(directory.path),
+  );
+
+final savedLanguage=LanguageCubit();
+Locale startLocale=const Locale("en");
+if(savedLanguage.state is LanguageChanged)
+{
+  startLocale=(savedLanguage.state as LanguageChanged).locale;
 }
 
+  
+  
+// Set the global Bloc observer
+  Bloc.observer = DefaultObserve();
 
+  // Run the app
+  runApp(
+     EasyLocalization(
+         supportedLocales: const [Locale('en'), Locale('ar')],
+         path: 'assets/translation',
+         fallbackLocale: const Locale('en'),
+         startLocale: startLocale,
+         child: const BookApp()),
+  );
+}
