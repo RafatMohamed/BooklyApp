@@ -27,6 +27,7 @@ void main() async {
 
 final savedLanguage=LanguageCubit();
 Locale startLocale=const Locale("en");
+
 if(savedLanguage.state is LanguageChanged)
 {
   startLocale=(savedLanguage.state as LanguageChanged).locale;
@@ -34,10 +35,8 @@ if(savedLanguage.state is LanguageChanged)
 
   
   
-// Set the global Bloc observer
   Bloc.observer = DefaultObserve();
 
-  // Run the app
   runApp(
      EasyLocalization(
          supportedLocales: const [Locale('en'), Locale('ar')],

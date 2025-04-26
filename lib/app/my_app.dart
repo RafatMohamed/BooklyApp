@@ -6,7 +6,6 @@ import 'package:bookly_app_t/features/search/model/search_cubit/search_cubit.dar
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import '../core/constant/app_constant.dart';
 import '../features/home/model/home_cubit/home_fetch_book_cubit.dart';
 import '../features/splash/views/splash_view.dart';

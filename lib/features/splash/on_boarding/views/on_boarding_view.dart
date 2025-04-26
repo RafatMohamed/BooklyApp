@@ -1,11 +1,8 @@
 import 'package:bookly_app_t/core/resources/app_color.dart';
-import 'package:bookly_app_t/features/home/data/book_model/book_model.dart';
 import 'package:bookly_app_t/features/splash/on_boarding/widgets/list_img.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../../../home/views/home_view.dart';
 import '../../../register/views/register_view.dart';
 
 class OnBoardingView extends StatefulWidget {

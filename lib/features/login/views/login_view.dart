@@ -1,15 +1,17 @@
-import 'package:bookly_app_t/core/helper/my_navigator_app.dart';
-import 'package:bookly_app_t/features/register/views/widget/coulmn_textform_w.dart';
-import 'package:bookly_app_t/features/register/views/widget/dont_have_account.dart';
+import 'package:bookly_app_t/core/resources/app_padding.dart';
+import 'package:bookly_app_t/features/home/data/book_model/book_model.dart';
+import 'package:bookly_app_t/features/home/views/home_view.dart';
+import 'package:bookly_app_t/features/login/views/widget/coulmn_textform_w.dart';
+import 'package:bookly_app_t/features/login/views/widget/dont_have_account.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../../core/resources/app_padding.dart';
+import '../../../core/helper/my_navigator_app.dart';
 import '../../../core/widget/custom_logo.dart';
 import '../../../core/widget/default_material_button.dart';
-import '../../login/views/login_view.dart';
 
-class RegisterView extends StatelessWidget {
-  const RegisterView({super.key});
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
   @override
   Widget build(BuildContext context) {
     final fixedSizeHeight = MediaQuery.of(context).size.height;
@@ -23,22 +25,23 @@ class RegisterView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    customLogo(context: context, width: 120),
+                    customLogo(context: context,),
                     const SizedBox(height: 100),
-                    const TextFormColumReg(),
+                    const TextFormColum(),
                     SizedBox(height: fixedSizeHeight * 0.03),
                     Column(
                       children: [
                         DefaultMaterialButton(
                           onPressed: () {
                             AppNavigator.navigatorPush(
-                              navigatorToPage:  const LoginView()
-                              , context: context,
+                              navigatorToPage:  const HomeView(homeModel: BookModel()
+                            ),
+                            context: context,
                             );
                           },
-                          text: "registerNow".tr(),
+                          text: "loginNow".tr(),
                         ),
-                        alreadyHaveAccount(context),
+                        dontHaveAccount(context),
                       ],
                     ),
                   ],

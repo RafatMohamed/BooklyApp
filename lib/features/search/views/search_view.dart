@@ -1,4 +1,3 @@
-import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:bookly_app_t/core/resources/app_padding.dart';
 import 'package:bookly_app_t/features/search/model/search_cubit/search_cubit.dart';
 import 'package:bookly_app_t/features/search/views/widgets/list_view_search.dart';

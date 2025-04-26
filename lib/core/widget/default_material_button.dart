@@ -18,11 +18,11 @@ class DefaultMaterialButton extends StatelessWidget {
       minWidth: double.infinity,
       onPressed: onPressed,
       elevation:5,
-      color: AppColor(context).blackColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),side: BorderSide(style: BorderStyle.solid,color: AppColor(context).whiteColor,width: 0.2)),
+      color: AppColor(context).whiteColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),side: BorderSide(style: BorderStyle.solid,color: AppColor(context).blackColor,width: 0.2)),
       child: Text(
         text,
-        style: Styles(context).textStyle20.copyWith(color: AppColor(context).whiteColor),
+        style: Styles(context).textStyle20.copyWith(color: AppColor(context).blackColor),
       ),
     );
   }

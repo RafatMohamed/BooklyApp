@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../constant/app_constant.dart';
 
 abstract class AppNavigator {
   static void navigatorPush({

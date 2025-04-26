@@ -6,7 +6,7 @@ Widget customTextFormPasswordLogin(context) {
   return  TextFormFieldApp(
     suffixIcon: IconButton(
       onPressed: () {},
-      icon: Icon(
+      icon: const Icon(
         color: Colors.white, Icons.visibility_off ,
       ),
     ),
@@ -24,15 +24,15 @@ Widget customTextFormPasswordLogin(context) {
     labelText: "password".tr(),
     hintText: 'pleaseEnterYourPassword'.tr(),
     onSubmitted: (value) {},
-    controller: TextEditingController(), onChange: (String ) {  },
-  );;
+    controller: TextEditingController(), onChange: (_ ) {  },
+  );
 }
 
 Widget customTextFormPasswordRegister(context) {
   return TextFormFieldApp(
     suffixIcon: IconButton(
       onPressed: () {},
-      icon: Icon(
+      icon: const Icon(
         color: Colors.white,
       Icons.visibility_off ,
       ),
@@ -51,6 +51,6 @@ Widget customTextFormPasswordRegister(context) {
     labelText: "password".tr(),
     hintText: 'pleaseEnterYourPassword'.tr(),
     onSubmitted: (value) {},
-    controller:TextEditingController(), onChange: (String ) {  },
+    controller:TextEditingController(), onChange: (_ ) {  },
   );
 }

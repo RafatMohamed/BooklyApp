@@ -11,4 +11,9 @@ abstract class AppPadding{
   static final EdgeInsetsGeometry a20 = const EdgeInsetsDirectional.all(
     20,
   );
+  static  EdgeInsetsGeometry hMLR({required BuildContext context}) =>   EdgeInsets.symmetric(
+    horizontal: MediaQuery.sizeOf(context).width * 0.05,
+  );
+
+
 }

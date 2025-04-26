@@ -10,8 +10,8 @@ class CustomNabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 16,
-      left: 25,
-      right: 25,
+      left: MediaQuery.sizeOf(context).width * 0.2,
+      right: MediaQuery.sizeOf(context).width * 0.2,
       child: Padding(
         padding: AppPadding.e20,
         child: Container(
@@ -25,23 +25,12 @@ class CustomNabBar extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(40),
           ),
-          width: MediaQuery.sizeOf(context).width * 0.7,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.home_max),
-                highlightColor: AppColor(context).highlightColor,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.area_chart),
-                highlightColor: AppColor(context).highlightColor,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.music_video_sharp),
+                icon: const Icon(Icons.book_outlined,size: 32,),
                 highlightColor: AppColor(context).highlightColor,
               ),
               IconButton(

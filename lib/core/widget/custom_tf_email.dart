@@ -20,7 +20,7 @@ Widget customTextFormEmailLogin(context) {
     onSubmitted: (value) {
     },
     controller:TextEditingController(),
-    onChange: (String ) {  },
+    onChange: (_ ) {  },
   );
 }
 
@@ -41,6 +41,6 @@ Widget customTextFormEmailRegister(context) {
     hintText: 'pleaseEnterYourEmail'.tr(),
     onSubmitted: (_) {},
     controller:TextEditingController(),
-    onChange: (String ) {  },
+    onChange: (_ ) {  },
   );
 }
