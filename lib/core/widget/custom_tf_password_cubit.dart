@@ -1,8 +1,11 @@
+import 'package:bookly_app_t/features/login/logic/login_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import '../../features/register/logic/register_cubit.dart';
 import 'default_text_form_field_app.dart';
 
 Widget customTextFormPasswordLogin(context) {
+  final cubitLogin = LoginCubit.get(context);
   return  TextFormFieldApp(
     suffixIcon: IconButton(
       onPressed: () {},
@@ -23,12 +26,16 @@ Widget customTextFormPasswordLogin(context) {
     obscureText: false,
     labelText: "password".tr(),
     hintText: 'pleaseEnterYourPassword'.tr(),
-    onSubmitted: (value) {},
-    controller: TextEditingController(), onChange: (_ ) {  },
+    onSubmitted: (value) {
+      cubitLogin.passwordController.text=value;
+    },
+    controller: cubitLogin.passwordController,
+    onChange: (_ ) {  },
   );
 }
 
 Widget customTextFormPasswordRegister(context) {
+  final cubitRegister = RegisterCubit.get(context);
   return TextFormFieldApp(
     suffixIcon: IconButton(
       onPressed: () {},
@@ -50,7 +57,10 @@ Widget customTextFormPasswordRegister(context) {
     obscureText: false,
     labelText: "password".tr(),
     hintText: 'pleaseEnterYourPassword'.tr(),
-    onSubmitted: (value) {},
-    controller:TextEditingController(), onChange: (_ ) {  },
+    onSubmitted: (value) {
+      cubitRegister.passwordController.text=value;
+    },
+    controller:cubitRegister.passwordController,
+    onChange: (_ ) {  },
   );
 }

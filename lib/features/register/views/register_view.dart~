@@ -1,10 +1,14 @@
-import 'package:bookly_app_t/features/register/views/widget/bloc_consumer_register.dart';
+import 'package:bookly_app_t/core/helper/my_navigator_app.dart';
+import 'package:bookly_app_t/features/login/logic/login_cubit.dart';
 import 'package:bookly_app_t/features/register/views/widget/coulmn_textform_w.dart';
 import 'package:bookly_app_t/features/register/views/widget/dont_have_account.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/resources/app_padding.dart';
 import '../../../core/widget/custom_logo.dart';
+import '../../../core/widget/default_material_button.dart';
+import '../../login/views/login_view.dart';
 import '../logic/register_cubit.dart';
 
 class RegisterView extends StatelessWidget {
@@ -30,7 +34,7 @@ class RegisterView extends StatelessWidget {
                     SizedBox(height: fixedSizeHeight * 0.03),
                     Column(
                       children: [
-                        const BlocConsumerRegister(),
+                       ,
                         alreadyHaveAccount(context),
                       ],
                     ),

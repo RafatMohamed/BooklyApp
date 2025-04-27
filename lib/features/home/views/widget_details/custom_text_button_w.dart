@@ -20,7 +20,7 @@ class CustomTextButt extends StatelessWidget{
         DefaultTextButton(
           onPressed: () async {
           final Uri url= Uri.parse("${bookModel.volumeInfo?.previewLink}");
-                await launchUrl(url, mode: LaunchMode.externalApplication); // Opens in browser
+                await launchUrl(url, mode: LaunchMode.inAppWebView); // Opens in browser
           },
           text: "freePreview".tr(),
           isButton: true,

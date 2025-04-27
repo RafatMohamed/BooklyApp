@@ -21,7 +21,7 @@ abstract class AppNotify {
   static Widget circularProgress(BuildContext context) {
     return  Center(
       child: CircularProgressIndicator(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColor(context).blackColor,
         color:AppColor(context).whiteColor,
       ),
     );
