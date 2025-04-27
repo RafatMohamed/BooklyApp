@@ -32,6 +32,28 @@ class RegisterView extends StatelessWidget {
                       children: [
                         const BlocConsumerRegister(),
                         alreadyHaveAccount(context),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon:const Icon(Icons.facebook)
+                        , color: Colors.red,
+                      onPressed: () {
+                        // هنا تحط كود تسجيل الدخول بـ Google
+                        print('Google icon pressed');
+                      },
+                    ),
+                    const SizedBox(width: 20),
+                    IconButton(
+                      icon: const Icon(Icons.facebook),
+                      color: Colors.blue,
+                      onPressed: () {
+                        // هنا تحط كود تسجيل الدخول بـ Facebook
+                        print('Facebook icon pressed');
+                      },
+                    ),
+                  ],
+                ),
                       ],
                     ),
                   ],

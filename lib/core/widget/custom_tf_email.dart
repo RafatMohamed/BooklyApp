@@ -1,3 +1,4 @@
+import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:bookly_app_t/features/login/logic/login_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ import 'default_text_form_field_app.dart';
 Widget customTextFormEmailLogin(context) {
   final cubitLogin = LoginCubit.get(context);
 return TextFormFieldApp(
-    suffixIcon: const Icon(Icons.email, color: Colors.white),
+    suffixIcon:  Icon(Icons.email, color: AppColor(context).whiteColor),
     validator: (value) {
       if (value == null || value.isEmpty) {
         return "pleaseEnterYourEmail".tr();
@@ -31,7 +32,7 @@ return TextFormFieldApp(
 Widget customTextFormEmailRegister(context) {
   final cubitRegister = RegisterCubit.get(context);
   return TextFormFieldApp(
-    suffixIcon: const Icon(Icons.email, color: Colors.white),
+    suffixIcon:  Icon(Icons.email, color: AppColor(context).whiteColor),
     validator: (value) {
       if (value == null || value.isEmpty) {
         return "pleaseEnterYourEmail".tr();
