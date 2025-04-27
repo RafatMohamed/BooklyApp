@@ -5,6 +5,7 @@ import 'package:bookly_app_t/features/login/views/widget/coulmn_textform_w.dart'
 import 'package:bookly_app_t/features/login/views/widget/dont_have_account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/resources/app_color.dart';
 import '../../../core/widget/custom_logo.dart';
 import '../logic/reset_pass_cubit/resrt_password_cubit.dart';
 
@@ -16,24 +17,37 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (context) => LoginCubit(),
   child: Scaffold(
-      body: Center(
-        child: Padding(
-          padding: AppPadding.hMLR(context: context),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                customLogo(context: context,),
-                const SizedBox(height: 100),
-                const TextFormColum(),
-                SizedBox(height: fixedSizeHeight * 0.03),
-                Column(
-                  children: [
-                    const BlocConsumerLogin(),
-                    dontHaveAccount(context),
-                  ],
-                ),
-              ],
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: AlignmentDirectional.topStart,
+                end: AlignmentDirectional.bottomCenter,
+                colors: [
+                  AppColor(context).whiteColor ,
+                  AppColor(context).highlightColor,
+                  AppColor(context).blackColor,
+                ]
+            )
+        ),
+        child: Center(
+          child: Padding(
+            padding: AppPadding.hMLR(context: context),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  customLogo(context: context,),
+                  const SizedBox(height: 100),
+                  const TextFormColum(),
+                  SizedBox(height: fixedSizeHeight * 0.03),
+                  Column(
+                    children: [
+                      const BlocConsumerLogin(),
+                      dontHaveAccount(context),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

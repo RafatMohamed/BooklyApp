@@ -45,8 +45,11 @@ class BlocConsumerResetPass extends StatelessWidget{
             }
             return DefaultMaterialButton(
               onPressed: () {
+              if(resetPassword.formKey.currentState!.validate()){
+                resetPassword.formKey.currentState!.save();
                 final emailAuth=resetPassword.resetEmailController.text;
                 resetPassword.resetPassword(emailAuth: emailAuth);
+              }
               },
               text: "confirm".tr(),
             );

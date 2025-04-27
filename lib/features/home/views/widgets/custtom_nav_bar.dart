@@ -1,12 +1,34 @@
+import 'dart:io';
+
+import 'package:bookly_app_t/core/constant/app_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import '../../../../core/resources/app_color.dart';
 import '../../../../core/resources/app_image.dart';
 import '../../../../core/resources/app_padding.dart';
 
-class CustomNabBar extends StatelessWidget {
-  const CustomNabBar({super.key});
+class CustomNabBar extends StatefulWidget {
+  const CustomNabBar({super.key,});
 
   @override
+  State<CustomNabBar> createState() => _CustomNabBarState();
+}
+
+class _CustomNabBarState extends State<CustomNabBar> {
+   String? profileImage;
+   @override
+  void initState() {
+     pickImage();
+    super.initState();
+  }
+   Future<void> pickImage() async {
+     var box = await Hive.openBox(kOpenImageBox);
+     setState(() {
+       profileImage = box.get('profileImage');
+     });
+   }
+
+   @override
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 16,
@@ -35,15 +57,22 @@ class CustomNabBar extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {},
-                icon: ClipOval(
-                  child: Image.asset(
-                    AppImage.imageTest,
+                icon:ClipOval(
+                  child: profileImage != null
+                      ? Image.file(
+                    File(profileImage ?? AppImage.imageProfile), // عرض الصورة من المسار
+                    height: 40,
+                    width: 40,
+                    fit: BoxFit.cover,
+                  )
+                      : Image.asset(
+                    AppImage.imageProfile, // إذا لم تكن هناك صورة، اعرض الصورة الافتراضية
                     height: 40,
                     width: 40,
                     fit: BoxFit.cover,
                   ),
                 ),
-                highlightColor: AppColor(context).highlightColor,
+                  highlightColor: AppColor(context).highlightColor,
               ),
             ],
           ),

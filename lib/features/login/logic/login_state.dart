@@ -12,3 +12,8 @@ final class LoginFailure extends LoginState {
  final String error;
  LoginFailure({required this.error});
 }
+final class LoginChangePasswordVisibility extends LoginState {
+  final bool obsecure;
+  LoginChangePasswordVisibility({required this.obsecure});
+}
+

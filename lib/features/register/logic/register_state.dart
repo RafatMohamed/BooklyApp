@@ -14,3 +14,7 @@ final class RegisterFailure extends RegisterState {
 final String error;
 RegisterFailure({required this.error});
 }
+final class LoginChangePasswordVisibility extends RegisterState {
+final bool obsecure;
+LoginChangePasswordVisibility({required this.obsecure});
+}

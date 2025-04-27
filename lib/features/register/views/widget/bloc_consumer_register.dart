@@ -39,8 +39,11 @@ class BlocConsumerRegister extends StatelessWidget{
        }
        return DefaultMaterialButton(
          onPressed: () {
+         if(cubitRegister.formKey.currentState!.validate()){
+           cubitRegister.formKey.currentState!.save();
            final UserModelAuth user = UserModelAuth(email: cubitRegister.emailController.text, password: cubitRegister.passwordController.text);
            cubitRegister.userRegister(user);
+         }
          },
          text: "registerNow".tr(),
        );

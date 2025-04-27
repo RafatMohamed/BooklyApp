@@ -1,3 +1,4 @@
+import 'package:bookly_app_t/features/register/logic/register_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resources/text_styles.dart';
@@ -9,16 +10,19 @@ class TextFormColumReg extends StatelessWidget {
 
  @override
   Widget build(BuildContext context) {
-   return Column(
-     crossAxisAlignment: CrossAxisAlignment.start,
-     spacing: 10,
-     children: [
-       Text("signUp".tr(), style: Styles(context).textStyle26),
-       const SizedBox(height: 10),
-       customTextFormEmailRegister(context),
-       const SizedBox(height: 10),
-       customTextFormPasswordRegister(context),
-     ],
+   return Form(
+     key: RegisterCubit.get(context).formKey,
+     child: Column(
+       crossAxisAlignment: CrossAxisAlignment.start,
+       spacing: 10,
+       children: [
+         Text("signUp".tr(), style: Styles(context).textStyle26),
+         const SizedBox(height: 10),
+         customTextFormEmailRegister(context),
+         const SizedBox(height: 10),
+         customTextFormPasswordRegister(context),
+       ],
+     ),
    );
   }
 }

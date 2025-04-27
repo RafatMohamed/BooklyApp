@@ -9,14 +9,23 @@ import 'package:bookly_app_t/app/my_app.dart';
 import 'app/logic/language_cubit/language_state.dart';
 import 'core/constant/app_constant.dart';
 import 'core/observe_model.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
 
+// ...
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   // Initialize Hive
   await Hive.initFlutter();
+  await Hive.openBox(kOpenBoxSettingThem);
   await Hive.openBox(kOpenBoxSettingThem);
 
 

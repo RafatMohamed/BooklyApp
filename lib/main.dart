@@ -26,6 +26,7 @@ void main() async {
   // Initialize Hive
   await Hive.initFlutter();
   await Hive.openBox(kOpenBoxSettingThem);
+  await Hive.openBox(kOpenImageBox);
 
 
   final directory = await getApplicationDocumentsDirectory();

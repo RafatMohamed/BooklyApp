@@ -8,6 +8,9 @@ import 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   final TextEditingController emailController =TextEditingController();
   final TextEditingController passwordController =TextEditingController();
+  final GlobalKey<FormState> formKey=GlobalKey();
+
+  bool obscureText=false;
   static LoginCubit get(context) => BlocProvider.of(context);
   LoginCubit() : super(LoginInitial());
   LoginRepo loginRepo = LoginRepo();
@@ -18,5 +21,16 @@ class LoginCubit extends Cubit<LoginState> {
       (error) => emit(LoginFailure(error: error)),
       (user) => emit(LoginSuccess(userModelAuth: user)),
     );
+  }
+  void changePasswordVisibility() {
+    obscureText =!obscureText;
+    emit(LoginChangePasswordVisibility(obsecure: obscureText));
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }

@@ -40,8 +40,11 @@ class BlocConsumerLogin extends StatelessWidget{
        }
        return DefaultMaterialButton(
          onPressed: () {
-           final UserModelAuth user = UserModelAuth(email: cubitLogin.emailController.text, password: cubitLogin.passwordController.text);
-           cubitLogin.userLogin(user);
+        if(cubitLogin.formKey.currentState!.validate()){
+          cubitLogin.formKey.currentState!.save();
+          final UserModelAuth user = UserModelAuth(email: cubitLogin.emailController.text, password: cubitLogin.passwordController.text);
+          cubitLogin.userLogin(user);
+                  }
          },
          text: "loginNow".tr(),
        );

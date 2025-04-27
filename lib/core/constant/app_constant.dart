@@ -6,3 +6,4 @@ const kTranstionDuration = Duration(milliseconds: 500);
 const kFontFamilyGSF = "GT Sectra Fine";
 const kFontFamilyMA = "Montserrat Alternates";
 const String kOpenBoxSettingThem = "ToggleThem";
+const String kOpenImageBox = "imageBox";

@@ -9,6 +9,8 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   ResetPasswordCubit() : super(ResetPasswordInitial());
   ResetPasswordRepo resetPasswordRepo =ResetPasswordRepo();
   final TextEditingController resetEmailController =TextEditingController();
+  final GlobalKey<FormState> formKey=GlobalKey();
+
   static ResetPasswordCubit get(context) => BlocProvider.of(context);
   Future<void> resetPassword({required String emailAuth}) async{
     emit(ResetPasswordLoading());
@@ -17,5 +19,11 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
           (error) =>emit(ResetPasswordFailure(error: error)) ,
       (email) =>emit(ResetPasswordSuccess(emailAuth: email)) ,
   );
+  }
+
+  @override
+  Future<void> close() {
+    resetEmailController.dispose();
+    return super.close();
   }
 }

@@ -83,7 +83,7 @@ class TextFormFieldApp extends StatelessWidget {
           ),
           hintText: hintText,
           hintStyle: TextStyle(
-            color: hintColor,
+            color: labelColor,
             fontSize: hintFontSize,
             fontWeight: hintFontWeight,
             fontStyle: hintFontStyle,

@@ -19,38 +19,41 @@ class ResetPasswordView extends StatelessWidget {
         builder: (context) {
           final resetCubit = ResetPasswordCubit.get(context);
           return Scaffold(
-            body: SafeArea(
-              child: Padding(
-                padding: AppPadding.hMLR(context: context),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFormFieldApp(
-                      suffixIcon:  Icon(Icons.email, color: AppColor(context).whiteColor),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Please enter your valid email";
-                        } else if (!value.contains("@")) {
-                          return "Please enter a valid email";
-                        } else if (value !=
-                            resetCubit.resetEmailController.text) {
-                          return "Please enter a valid email";
-                        }
-                        return null;
-                      },
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.emailAddress,
-                      labelText: "email".tr(),
-                      hintText: 'pleaseEnterYourEmail'.tr(),
-                      onSubmitted: (email) {
-                        resetCubit.resetEmailController.text = email;
-                      },
-                      controller: resetCubit.resetEmailController,
-                      onChange: (_) {},
-                    ),
-                    const SizedBox(height: 50),
-                    const BlocConsumerResetPass(),
-                  ],
+            body: Form(
+              key: resetCubit.formKey,
+              child: SafeArea(
+                child: Padding(
+                  padding: AppPadding.hMLR(context: context),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextFormFieldApp(
+                        suffixIcon:  Icon(Icons.email, color: AppColor(context).whiteColor),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please enter your valid email";
+                          } else if (!value.contains("@")) {
+                            return "Please enter a valid email";
+                          } else if (value !=
+                              resetCubit.resetEmailController.text) {
+                            return "Please enter a valid email";
+                          }
+                          return null;
+                        },
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.emailAddress,
+                        labelText: "email".tr(),
+                        hintText: 'pleaseEnterYourEmail'.tr(),
+                        onSubmitted: (email) {
+                          resetCubit.resetEmailController.text = email;
+                        },
+                        controller: resetCubit.resetEmailController,
+                        onChange: (_) {},
+                      ),
+                      const SizedBox(height: 50),
+                      const BlocConsumerResetPass(),
+                    ],
+                  ),
                 ),
               ),
             ),

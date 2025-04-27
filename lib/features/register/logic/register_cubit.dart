@@ -7,6 +7,9 @@ import '../data/repo.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   final TextEditingController emailController =TextEditingController();
   final TextEditingController passwordController =TextEditingController();
+  final GlobalKey<FormState> formKey=GlobalKey();
+   bool obscureText=false;
+
   static RegisterCubit get(context) => BlocProvider.of(context);
   RegisterCubit() : super(RegisterInitial());
   RegisterRepo registerRepo = RegisterRepo();
@@ -17,5 +20,17 @@ class RegisterCubit extends Cubit<RegisterState> {
       (error) => emit(RegisterFailure(error: error)),
       (user) => emit(RegisterSuccess(userModelAuth: user)),
     );
+  }
+
+  void changePasswordVisibility() {
+    obscureText = !obscureText;
+    emit(LoginChangePasswordVisibility(obsecure: obscureText));
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }
