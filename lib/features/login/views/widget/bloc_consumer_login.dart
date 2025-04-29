@@ -1,4 +1,5 @@
 import 'package:bookly_app_t/core/helper/notify_app.dart';
+import 'package:bookly_app_t/core/logic/is_login_hive.dart';
 import 'package:bookly_app_t/core/models/auth_user.dart';
 import 'package:bookly_app_t/features/login/logic/login_cubit.dart';
 import 'package:bookly_app_t/features/login/logic/login_state.dart';
@@ -43,6 +44,7 @@ class BlocConsumerLogin extends StatelessWidget{
           final UserModelAuth user = UserModelAuth(email: cubitLogin.emailController.text, password: cubitLogin.passwordController.text);
           cubitLogin.userLogin(user);
                   }
+        SavedLogin.savedLogin(isLogin: true);
          },
          text: "loginNow".tr(),
        );

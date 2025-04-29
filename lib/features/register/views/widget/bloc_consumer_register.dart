@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helper/my_navigator_app.dart';
+import '../../../../core/logic/is_login_hive.dart';
 import '../../../../core/widget/default_material_button.dart';
 import '../../../home/views/home_view.dart';
 class BlocConsumerRegister extends StatelessWidget{
@@ -43,6 +44,7 @@ class BlocConsumerRegister extends StatelessWidget{
            final UserModelAuth user = UserModelAuth(email: cubitRegister.emailController.text, password: cubitRegister.passwordController.text);
            cubitRegister.userRegister(user);
          }
+         SavedLogin.savedLogin(isLogin: true);
          },
          text: "registerNow".tr(),
        );

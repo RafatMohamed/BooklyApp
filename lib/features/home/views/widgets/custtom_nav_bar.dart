@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:bookly_app_t/core/constant/app_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/resources/app_color.dart';
 import '../../../../core/resources/app_image.dart';
 import '../../../../core/resources/app_padding.dart';
+import '../../../person/views/person_view.dart';
 
 class CustomNabBar extends StatefulWidget {
   const CustomNabBar({super.key,});
@@ -56,7 +58,9 @@ class _CustomNabBarState extends State<CustomNabBar> {
                 highlightColor: AppColor(context).highlightColor,
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  AppNavigator.navigatorPush(context: context, navigatorToPage: PersonView(profileImage: profileImage!,));
+                },
                 icon:ClipOval(
                   child: profileImage != null
                       ? Image.file(

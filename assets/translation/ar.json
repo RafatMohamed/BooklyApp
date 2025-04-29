@@ -41,6 +41,7 @@
   "passwordMustBeAtLeast6Characters": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
   "gallery": "اختيار صورة من المعرض",
   "camera": "التقاط صورة بالكاميرا",
-  "chooseImage": "اختيار صورة"
+  "chooseImage": "اختيار صورة",
+  "welcome": "مرحباً"
 }
 

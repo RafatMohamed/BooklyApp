@@ -1,10 +1,12 @@
 import 'package:bookly_app_t/core/resources/app_color.dart';
+import 'package:bookly_app_t/features/home/views/home_view.dart';
 import 'package:bookly_app_t/features/login/views/login_view.dart';
 import 'package:bookly_app_t/features/splash/on_boarding/widgets/list_img.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../../register/views/register_view.dart';
+import 'package:hive_flutter/adapters.dart';
+import '../../../../core/constant/app_constant.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -17,6 +19,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   final CarouselSliderController carouselController =
       CarouselSliderController();
   int currentIndex = 0;
+
+  Future<bool> checkIsLogin()async {
+    var box = await Hive.openBox(kUserLogin);
+    return  box.get('isLogin',defaultValue:  false);
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +64,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               right:context.locale == const Locale("en") ? 16:null,
               left: context.locale == const Locale("ar") ? 16:null,
               child: TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (context, _, _) {
-                        return const LoginView();
-                      },
-                    ),
-                  );
+                onPressed: () async{
+                  await checkLoginAndNavigator(context);
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: AppColor(context).blackColor.withValues(alpha: 0.5),
@@ -135,16 +136,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               right:context.locale == const Locale("en") ? 16:null,
               left: context.locale == const Locale("ar") ? 16:null,
               child: TextButton(
-                onPressed: () {
+                onPressed: () async{
                   if (currentIndex == imageListB.length -1) {
-                    Navigator.pushReplacement(
-                      context,
-                      PageRouteBuilder(
-                        pageBuilder:
-                            (context, animation, secondaryAnimation) =>
-                                const RegisterView(),
-                      ),
-                    );
+                    await checkLoginAndNavigator(context);
                   } else {
                     carouselController.nextPage(
                       duration: const Duration(milliseconds: 300),
@@ -166,6 +160,18 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Future<void> checkLoginAndNavigator(BuildContext context) async {
+    bool islogin = await checkIsLogin() ;
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, _, _) {
+          return  islogin ? const  HomeView() : const LoginView();
+        },
       ),
     );
   }

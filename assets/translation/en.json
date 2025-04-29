@@ -40,6 +40,7 @@
   "passwordMustBeAtLeast6Characters": "Password must be at least 6 characters",
   "gallery": "Choose a photo from the gallery",
   "camera": "Capture a photo with the camera",
-  "chooseImage": "Choose a photo"
+  "chooseImage": "Choose a photo",
+  "welcome": "Welcome"
 
 }
