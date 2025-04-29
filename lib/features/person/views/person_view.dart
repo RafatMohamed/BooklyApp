@@ -1,20 +1,35 @@
-import 'dart:io';
-
-import 'package:bookly_app_t/core/helper/my_navigator_app.dart';
 import 'package:bookly_app_t/features/login/views/login_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-
 import '../../../core/constant/app_constant.dart';
+import '../../../core/models/auth_user.dart';
 import '../../../core/resources/app_color.dart';
-import '../../../core/resources/app_image.dart';
-import '../../../core/resources/app_padding.dart';
 import '../../../core/resources/text_styles.dart';
+import '../../../core/widget/image_profile.dart';
 
-class PersonView extends StatelessWidget {
-  const PersonView({super.key, required this.profileImage});
-  final String profileImage;
+class PersonView extends StatefulWidget {
+  const PersonView({super.key});
+
+  @override
+  State<PersonView> createState() => _PersonViewState();
+}
+
+class _PersonViewState extends State<PersonView> {
+  UserModelAuth? user;
+  @override
+  void initState() {
+    pickImage();
+    super.initState();
+  }
+
+  Future<void> pickImage() async {
+    var box = await Hive.openBox<UserModelAuth>(kUserInfo);
+    setState(() {
+      user = box.get('currentUser');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,16 +58,12 @@ class PersonView extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
-                    ClipOval(
-                      child: Image.file(
-                        File(profileImage),
-                        height: 100,
-                        width: 100,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    CustomImagePerson.imageProfile(image: user?.imageProfile,),
                     const SizedBox(height: 20),
-                    Text("name", style: Styles(context).textStyle26),
+                    Text(
+                      (user?.email ?? "UnKnown".tr()).split('@')[0],
+                      style: Styles(context).textStyle26,
+                    ),
                   ],
                 ),
               ),
@@ -84,8 +95,11 @@ class PersonView extends StatelessWidget {
   Future<void> logout({required BuildContext context}) async {
     var box = await Hive.openBox(kUserLogin);
     box.put('isLogin', false);
-    if (context.mounted) {
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginView(),));
-    }
+   if(context.mounted){
+     await Navigator.pushReplacement(
+       context,
+       MaterialPageRoute(builder: (context) => const LoginView()),
+     );
+   }
   }
 }

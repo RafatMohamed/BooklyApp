@@ -20,12 +20,26 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       CarouselSliderController();
   int currentIndex = 0;
 
+
+
   Future<bool> checkIsLogin()async {
     var box = await Hive.openBox(kUserLogin);
     return  box.get('isLogin',defaultValue:  false);
 
   }
-
+  Future<void> checkLoginAndNavigator({required BuildContext context}) async {
+    bool isLogin = await checkIsLogin() ;
+    if(context.mounted){
+     await Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, _, _) {
+            return  isLogin ? const  HomeView() : const LoginView();
+          },
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -65,7 +79,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               left: context.locale == const Locale("ar") ? 16:null,
               child: TextButton(
                 onPressed: () async{
-                  await checkLoginAndNavigator(context);
+                  await checkLoginAndNavigator(context: context);
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: AppColor(context).blackColor.withValues(alpha: 0.5),
@@ -138,7 +152,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               child: TextButton(
                 onPressed: () async{
                   if (currentIndex == imageListB.length -1) {
-                    await checkLoginAndNavigator(context);
+                    await checkLoginAndNavigator(context: context);
                   } else {
                     carouselController.nextPage(
                       duration: const Duration(milliseconds: 300),
@@ -164,15 +178,4 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 
-  Future<void> checkLoginAndNavigator(BuildContext context) async {
-    bool islogin = await checkIsLogin() ;
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, _, _) {
-          return  islogin ? const  HomeView() : const LoginView();
-        },
-      ),
-    );
-  }
 }

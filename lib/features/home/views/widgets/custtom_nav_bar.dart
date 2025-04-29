@@ -1,17 +1,15 @@
-import 'dart:io';
-
 import 'package:bookly_app_t/core/constant/app_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import '../../../../core/helper/my_navigator_app.dart';
+import '../../../../core/models/auth_user.dart';
 import '../../../../core/resources/app_color.dart';
-import '../../../../core/resources/app_image.dart';
 import '../../../../core/resources/app_padding.dart';
+import '../../../../core/widget/image_profile.dart';
 import '../../../person/views/person_view.dart';
 
 class CustomNabBar extends StatefulWidget {
   const CustomNabBar({super.key,});
-
   @override
   State<CustomNabBar> createState() => _CustomNabBarState();
 }
@@ -24,9 +22,10 @@ class _CustomNabBarState extends State<CustomNabBar> {
     super.initState();
   }
    Future<void> pickImage() async {
-     var box = await Hive.openBox(kOpenImageBox);
+
+   var box = await Hive.openBox<UserModelAuth>(kUserInfo);
      setState(() {
-       profileImage = box.get('profileImage');
+       profileImage = box.get('currentUser')!.imageProfile;
      });
    }
 
@@ -59,24 +58,10 @@ class _CustomNabBarState extends State<CustomNabBar> {
               ),
               IconButton(
                 onPressed: () {
-                  AppNavigator.navigatorPush(context: context, navigatorToPage: PersonView(profileImage: profileImage!,));
+                  AppNavigator.navigatorPush(context: context, navigatorToPage: const PersonView());
                 },
-                icon:ClipOval(
-                  child: profileImage != null
-                      ? Image.file(
-                    File(profileImage ?? AppImage.imageProfile), // عرض الصورة من المسار
-                    height: 40,
-                    width: 40,
-                    fit: BoxFit.cover,
-                  )
-                      : Image.asset(
-                    AppImage.imageProfile, // إذا لم تكن هناك صورة، اعرض الصورة الافتراضية
-                    height: 40,
-                    width: 40,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                  highlightColor: AppColor(context).highlightColor,
+                icon:CustomImagePerson.imageProfile(image: profileImage,size:40 ),
+                highlightColor: AppColor(context).highlightColor,
               ),
             ],
           ),

@@ -9,8 +9,8 @@ class RegisterRepo{
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-        email: user.email,
-        password: user.password,
+        email: user.email!,
+        password: user.password!,
       );
 
       return right(user);

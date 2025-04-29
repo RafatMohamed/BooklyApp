@@ -9,6 +9,7 @@ class LoginCubit extends Cubit<LoginState> {
   final TextEditingController emailController =TextEditingController();
   final TextEditingController passwordController =TextEditingController();
   final GlobalKey<FormState> formKey=GlobalKey();
+  String imageProfile='';
 
   bool obscureText=false;
   static LoginCubit get(context) => BlocProvider.of(context);

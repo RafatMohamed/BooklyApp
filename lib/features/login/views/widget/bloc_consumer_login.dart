@@ -6,7 +6,10 @@ import 'package:bookly_app_t/features/login/logic/login_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
+import '../../../../core/constant/app_constant.dart';
 import '../../../../core/helper/my_navigator_app.dart';
+import '../../../../core/logic/save_info_person.dart';
 import '../../../../core/widget/default_material_button.dart';
 import '../../../home/views/home_view.dart';
 
@@ -38,13 +41,19 @@ class BlocConsumerLogin extends StatelessWidget{
          return AppNotify.circularProgress(context);
        }
        return DefaultMaterialButton(
-         onPressed: () {
-        if(cubitLogin.formKey.currentState!.validate()){
+         onPressed: () async{
+           var box = await Hive.openBox<UserModelAuth>(kUserInfo);
+          var image= box.get('currentUser')!.imageProfile;
+           final UserModelAuth user = UserModelAuth(email: cubitLogin.emailController.text, password: cubitLogin.passwordController.text,
+               imageProfile:image );
+           if(cubitLogin.formKey.currentState!.validate()){
           cubitLogin.formKey.currentState!.save();
-          final UserModelAuth user = UserModelAuth(email: cubitLogin.emailController.text, password: cubitLogin.passwordController.text);
           cubitLogin.userLogin(user);
-                  }
-        SavedLogin.savedLogin(isLogin: true);
+          await  SavedLogin.savedLogin(isLogin: true);
+          var box = await Hive.openBox<UserModelAuth>(kUserInfo);
+          await box.put("currentUser", user);
+         await SavedInfoPerson.savedInfoPerson(user:user);
+           }
          },
          text: "loginNow".tr(),
        );

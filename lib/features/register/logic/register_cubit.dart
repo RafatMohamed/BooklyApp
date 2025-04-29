@@ -5,13 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/repo.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
+  RegisterCubit() : super(RegisterInitial());
   final TextEditingController emailController =TextEditingController();
   final TextEditingController passwordController =TextEditingController();
   final GlobalKey<FormState> formKey=GlobalKey();
    bool obscureText=false;
+    String imageProfile='';
 
   static RegisterCubit get(context) => BlocProvider.of(context);
-  RegisterCubit() : super(RegisterInitial());
   RegisterRepo registerRepo = RegisterRepo();
   Future<void> userRegister(UserModelAuth user) async {
     emit(RegisterLoading());
@@ -26,6 +27,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     obscureText = !obscureText;
     emit(LoginChangePasswordVisibility(obsecure: obscureText));
   }
+
 
   @override
   Future<void> close() {

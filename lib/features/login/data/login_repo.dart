@@ -7,8 +7,8 @@ class LoginRepo{
   Future <Either<String,UserModelAuth>> loginUser({required UserModelAuth user}) async {
     try {
        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: user.email,
-          password: user.password
+          email: user.email!,
+          password: user.password!
       );
       return Right(user);
     } on FirebaseAuthException catch (e) {

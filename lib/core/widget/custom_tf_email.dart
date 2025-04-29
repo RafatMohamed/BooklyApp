@@ -23,6 +23,7 @@ return TextFormFieldApp(
     hintText: 'pleaseEnterYourEmail'.tr(),
     onSubmitted: (email) {
       cubitLogin.emailController.text=email;
+      FocusManager.instance.primaryFocus?.unfocus();
     },
     controller: cubitLogin.emailController,
     onChange: (_) {},
@@ -47,6 +48,7 @@ Widget customTextFormEmailRegister(context) {
     hintText: 'pleaseEnterYourEmail'.tr(),
     onSubmitted: (email) {
       cubitRegister.emailController.text=email;
+      FocusManager.instance.primaryFocus?.unfocus();
     },
     controller: cubitRegister.emailController,
     onChange: (_) {},
