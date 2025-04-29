@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/resources/app_color.dart';
 import '../../../core/widget/custom_logo.dart';
-import '../logic/reset_pass_cubit/resrt_password_cubit.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

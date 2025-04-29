@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class ResetPasswordRepo {
   Future<Either<String, String>> resetPassword({required String emailAuth}) async {
     if (emailAuth.isEmpty) {
-      return Left("Email cannot be empty.");
+      return const Left("Email cannot be empty.");
     }
 
     try {

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/widget/default_material_button.dart';
-import '../../../home/data/book_model/book_model.dart';
 import '../../../home/views/home_view.dart';
 
 class BlocConsumerLogin extends StatelessWidget{
@@ -28,8 +27,7 @@ class BlocConsumerLogin extends StatelessWidget{
           AppNotify.snackBar(widget: Text("Success login ${state.userModelAuth.email}"), context: context),
         );
         AppNavigator.navigatorPush(
-          navigatorToPage:  const HomeView(homeModel: BookModel()
-          ),
+          navigatorToPage:  const HomeView(),
           context: context,
         );
       }

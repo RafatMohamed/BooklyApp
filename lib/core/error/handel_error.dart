@@ -25,8 +25,6 @@ String _handleError(FirebaseAuthException e) {
       return 'Too many login attempts. Try again later.';
 
   // Email verification errors
-    case 'invalid-email':
-      return 'The email address is badly formatted.';
     case 'missing-android-pkg-name':
       return 'Android package name is required for this operation.';
     case 'missing-ios-bundle-id':
@@ -37,26 +35,15 @@ String _handleError(FirebaseAuthException e) {
       return 'The phone number format is invalid.';
     case 'quota-exceeded':
       return 'SMS quota exceeded for the project. Try again later.';
-    case 'too-many-requests':
-      return 'Too many requests. Try again later.';
 
   // Password reset errors
-    case 'invalid-email':
-      return 'The email address is badly formatted.';
 
   // Firebase Auth errors related to API
-    case 'user-not-found':
-      return 'No user found for the provided email address.';
-    case 'wrong-password':
-      return 'Incorrect password entered for the user.';
     case 'account-exists-with-different-credential':
       return 'An account already exists with a different credential.';
     case 'credential-already-in-use':
       return 'This credential is already in use.';
 
-  // General errors
-    case 'email-already-in-use':
-      return 'The email address is already in use by another account.';
 
   // Catch all errors not handled above
     default:

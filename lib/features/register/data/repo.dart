@@ -7,7 +7,7 @@ import '../../../core/error/handel_error.dart';
 class RegisterRepo{
   Future<Either<String, UserModelAuth>> registerUser({required UserModelAuth user}) async {
     try {
-      final credential = await FirebaseAuth.instance
+      await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
         email: user.email,
         password: user.password,

@@ -8,9 +8,8 @@ import '../data/book_model/book_model.dart';
 import '../model/home_cubit/home_fetch_book_cubit.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key, required this.homeModel,});
+  const HomeView({super.key,});
 
-  final BookModel homeModel;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +25,9 @@ class HomeView extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: AppPadding.s20T20,
-            child: Stack(
+            child: const Stack(
               children: [
-                StackHome(homeModel: homeModel),
+               StackHome(homeModel: BookModel()),
                 // test how to build the BottomSheet
 
                 // DraggableScrollableSheet(

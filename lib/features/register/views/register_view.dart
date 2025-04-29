@@ -102,9 +102,11 @@ class RegisterView extends StatelessWidget {
                                           'Google Sign-In successful! Welcome, ${userCredential.user!.displayName}',
 
                                         );
-                                       return AppNavigator.navigatorPush(context: context,
-                                            navigatorToPage: TestttView(text:userCredential.user!.displayName,)
-                                        );
+                                        if(context.mounted){
+                                          return AppNavigator.navigatorPush(context: context,
+                                              navigatorToPage: TestttView(text:userCredential.user!.displayName,)
+                                          );
+                                        }
                                       } else {
                                         print('Google Sign-In failed.');
                                       }

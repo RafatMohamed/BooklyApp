@@ -19,7 +19,7 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
   void initState() {
     super.initState();
     initAnimation();
-    goToHome(context);
+    goToOnBoarding(context);
   }
 
   @override
@@ -40,7 +40,7 @@ class _SplashViewWidgetState extends State<SplashViewWidget>
     );
   }
 
-  void goToHome(context) {
+  void goToOnBoarding(context) {
     if (isBack) return;
     isBack = true;
     Future.delayed(const Duration(seconds: 2), () {

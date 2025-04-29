@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class LoginRepo{
   Future <Either<String,UserModelAuth>> loginUser({required UserModelAuth user}) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: user.email,
           password: user.password
       );

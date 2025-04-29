@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TestttView extends StatelessWidget{
@@ -8,7 +7,7 @@ class TestttView extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(text??"",style: TextStyle(fontSize: 50),),
+        child: Text(text??"",style: const TextStyle(fontSize: 50),),
       ),
     );
   }

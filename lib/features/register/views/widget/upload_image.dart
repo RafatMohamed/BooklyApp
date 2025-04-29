@@ -12,10 +12,10 @@ class PickImageScreen extends StatefulWidget {
   const PickImageScreen({super.key});
 
   @override
-  _PickImageScreenState createState() => _PickImageScreenState();
+  PickImageScreenState createState() => PickImageScreenState();
 }
 
-class _PickImageScreenState extends State<PickImageScreen> {
+class PickImageScreenState extends State<PickImageScreen> {
   File? image;
   final ImagePicker picker = ImagePicker();
 
