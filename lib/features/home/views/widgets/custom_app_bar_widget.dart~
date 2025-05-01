@@ -27,6 +27,8 @@ class CustomAppBarWidget extends StatelessWidget {
                   },
                   icon: const Icon(Icons.search_sharp, size: 32),
                 ),
+                const DropDownLang(),
+                const ThemToggleBuilder(),
               ],
             ),
           ],

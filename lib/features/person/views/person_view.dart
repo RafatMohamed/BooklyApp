@@ -2,12 +2,16 @@ import 'package:bookly_app_t/core/helper/notify_app.dart';
 import 'package:bookly_app_t/features/login/views/login_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import '../../../app/logic/them_toggle_cubit.dart';
 import '../../../core/constant/app_constant.dart';
 import '../../../core/logic/save_info_person.dart';
 import '../../../core/models/auth_user.dart';
 import '../../../core/resources/app_color.dart';
 import '../../../core/resources/text_styles.dart';
+import '../../../core/widget/bloc_builder_them.dart';
+import '../../../core/widget/drop_down_lang.dart';
 import '../../../core/widget/image_profile.dart';
 
 class PersonView extends StatefulWidget {
@@ -18,7 +22,7 @@ class PersonView extends StatefulWidget {
 }
 
 class _PersonViewState extends State<PersonView> {
-   UserModelAuth? user;
+  UserModelAuth? user;
   @override
   void initState() {
     pickImage();
@@ -34,6 +38,7 @@ class _PersonViewState extends State<PersonView> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemToggleCubit>();
     return Scaffold(
       body:user == null ?
      AppNotify.circularProgress(context)
@@ -73,21 +78,88 @@ class _PersonViewState extends State<PersonView> {
               ),
               const SizedBox(height: 50),
               Divider(
-                indent: 40,
+                endIndent: 40,
                 color: AppColor(context).whiteColor.withValues(alpha: 0.5),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 5),
+              Row(
+                children: [
+                  const Icon(
+                    Icons.settings,
+                    color: Colors.black54,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "settings".tr(),
+                    style: Styles(context).textStyle26,
+                  ).tr(),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                       cubit.isDark ? Icons.dark_mode : Icons.light_mode,
+                        color: Colors.black54,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        "theme".tr(),
+                        style: Styles(context).textStyle20,
+                      ).tr(),
+                    ],
+                  ),
+
+                  const ThemToggleBuilder(),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.language,
+                        color: Colors.black54,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        "language".tr(),
+                        style: Styles(context).textStyle20,
+                      ).tr(),
+                    ],
+                  ),
+
+                  const DropDownLang(),
+                ],
+              ),
+              Divider(
+                endIndent: 40,
+                color: AppColor(context).whiteColor.withValues(alpha: 0.5),
+              ),
               TextButton(
                 onPressed: () async {
                   logout(context: context);
                 },
                 child:
-                    Text(
-                      "logout".tr(),
-                      style: Styles(context).textStyle30.copyWith(
-                        color: Colors.redAccent.shade200.withValues(alpha: 0.7),
-                      ),
-                    ).tr(),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.logout,
+                          color: Colors.redAccent,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          "logout".tr(),
+                          style: Styles(context).textStyle26.copyWith(
+                            color: Colors.redAccent.shade200.withValues(alpha: 0.7),
+                          ),
+                        ).tr(),
+                      ],
+                    ),
               ),
             ],
           ),
