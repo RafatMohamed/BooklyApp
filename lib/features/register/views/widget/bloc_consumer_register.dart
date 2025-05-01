@@ -42,19 +42,24 @@ class BlocConsumerRegister extends StatelessWidget{
        }
        return DefaultMaterialButton(
          onPressed: () async{
-           var box = await Hive.openBox<UserModelAuth>(kUserInfo);
-           var image= box.get('currentUser')!.imageProfile;
-           final UserModelAuth user = UserModelAuth(email: cubitRegister.emailController.text, password: cubitRegister.passwordController.text,
-               imageProfile: image
-           );
            if(cubitRegister.formKey.currentState!.validate()){
            cubitRegister.formKey.currentState!.save();
+           String imagePath = "";
+           UserModelAuth? tempUser = await SavedInfoPerson.getInfoPerson(key: "currentUser");
+           if (tempUser != null && tempUser.imageProfile != null && tempUser.imageProfile!.isNotEmpty) {
+             imagePath = tempUser.imageProfile!;
+           }
+
+           final UserModelAuth user = UserModelAuth(
+             email: cubitRegister.emailController.text,
+             password: cubitRegister.passwordController.text,
+             imageProfile: imagePath,
+           );
            cubitRegister.userRegister(user);
            SavedLogin.savedLogin(isLogin: true);
-           var box = await Hive.openBox<UserModelAuth>(kUserInfo);
-           await box.put("currentUser", user);
-           SavedInfoPerson.savedInfoPerson(user:user);
-         }
+           SavedInfoPerson.savedInfoPerson(user:user, key: user.email!);
+           await SavedInfoPerson.savedInfoPerson(user: user, key: "currentUser");
+           }
          },
          text: "registerNow".tr(),
        );

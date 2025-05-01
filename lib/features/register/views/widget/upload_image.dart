@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../../core/logic/save_info_person.dart';
 import '../../../../core/models/auth_user.dart';
 import '../../../../core/widget/image_profile.dart';
 
@@ -16,27 +17,35 @@ class PickImageScreen extends StatefulWidget {
 }
 
 class PickImageScreenState extends State<PickImageScreen> {
-  String? image;
-  late  UserModelAuth updatedUser;
+  String? imagePath;
   final ImagePicker picker = ImagePicker();
+
+  Future<void> getInfo() async {
+    UserModelAuth? currentUser = await SavedInfoPerson.getInfoPerson(key: "currentUser");
+    if (currentUser != null && currentUser.imageProfile != null && currentUser.imageProfile!.isNotEmpty) {
+     setState(() {
+       imagePath = currentUser.imageProfile;
+     }
+     );
+   }
+  }
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await picker.pickImage(source: source);
-
     if (pickedFile != null) {
-      setState(() {
-        image = pickedFile.path;
-      });
-      var box = await Hive.openBox<UserModelAuth>(kUserInfo);
-      final user = box.get("currentUser");
-      updatedUser  = UserModelAuth(
-        email: user?.email,
-        password: user?.password,
-        imageProfile: pickedFile.path,
-      );
-
-      if (user != null) {
-        await box.put("currentUser", updatedUser);
+      String path = pickedFile.path;
+      UserModelAuth? currentUser = await SavedInfoPerson.getInfoPerson(key: "currentUser");
+      if (currentUser != null) {
+        UserModelAuth updatedUser = UserModelAuth(
+          email: currentUser.email,
+          password: currentUser.password,
+          imageProfile: path,
+        );
+        await SavedInfoPerson.savedInfoPerson(user: updatedUser, key: "currentUser");
+        await SavedInfoPerson.savedInfoPerson(user: updatedUser, key: updatedUser.email!);
+        setState(() {
+          imagePath = path;
+        });
       }
     } else {
       print('لم يتم اختيار صورة.');
@@ -98,7 +107,7 @@ class PickImageScreenState extends State<PickImageScreen> {
           child: Text("chooseImage".tr(), style: Styles(context).textStyle20),
         ),
         const SizedBox(height: 20),
-        CustomImagePerson.imageProfile(image: image),
+        CustomImagePerson.imageProfile(image: imagePath),
       ],
     );
   }
