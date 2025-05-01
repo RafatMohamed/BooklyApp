@@ -42,16 +42,18 @@ class BlocConsumerLogin extends StatelessWidget{
        }
        return DefaultMaterialButton(
          onPressed: () async{
-           var _ = await Hive.openBox<UserModelAuth>(kUserInfo);
-           final UserModelAuth user = UserModelAuth(email: cubitLogin.emailController.text, password: cubitLogin.passwordController.text,);
            if(cubitLogin.formKey.currentState!.validate()){
              cubitLogin.formKey.currentState!.save();
+             var _ = await Hive.openBox<UserModelAuth>(kUserInfo);
+             final UserModelAuth user = UserModelAuth(email: cubitLogin.emailController.text, password: cubitLogin.passwordController.text,);
+             cubitLogin.userLogin(user);
              UserModelAuth? existingUser = await SavedInfoPerson.getInfoPerson(key: user.email!);
-             if (existingUser != null && existingUser.password == user.password) {
-               cubitLogin.userLogin(existingUser);
-               SavedLogin.savedLogin(isLogin: true);
+             if (existingUser != null) {
                await SavedInfoPerson.savedInfoPerson(user: existingUser, key: "currentUser");
+             }else{
+               await SavedInfoPerson.savedInfoPerson(user:  UserModelAuth(email: user.email), key: user.email!);
              }
+            await SavedLogin.savedLogin(isLogin: true);
            }
          },
          text: "loginNow".tr(),

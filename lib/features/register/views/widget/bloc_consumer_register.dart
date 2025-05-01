@@ -1,5 +1,6 @@
 import 'package:bookly_app_t/core/helper/notify_app.dart';
 import 'package:bookly_app_t/core/models/auth_user.dart';
+import 'package:bookly_app_t/core/resources/app_image.dart';
 import 'package:bookly_app_t/features/register/logic/register_cubit.dart';
 import 'package:bookly_app_t/features/register/logic/register_state.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -41,7 +42,8 @@ class BlocConsumerRegister extends StatelessWidget{
          onPressed: () async{
            if(cubitRegister.formKey.currentState!.validate()){
            cubitRegister.formKey.currentState!.save();
-           String? imagePath ;
+           String imagePath = cubitRegister.pickedImagePath ?? AppImage.imageProfile;
+
            final UserModelAuth user = UserModelAuth(
              email: cubitRegister.emailController.text,
              password: cubitRegister.passwordController.text,

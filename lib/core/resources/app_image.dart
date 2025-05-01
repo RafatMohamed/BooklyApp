@@ -6,4 +6,6 @@ abstract class AppImage{
   static final String boarding2= "assets/images/OIP.jpeg";
   static final String boarding3= "assets/images/OIP (1).jpeg";
   static final String boarding4= "assets/images/OIP (2).jpeg";
+  static final String boarding5= "assets/images/cat1.webp";
+  static final String boarding6= "assets/images/cat2.webp";
 }

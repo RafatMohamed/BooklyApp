@@ -2,10 +2,12 @@ import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:bookly_app_t/core/resources/text_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/logic/save_info_person.dart';
 import '../../../../core/models/auth_user.dart';
 import '../../../../core/widget/image_profile.dart';
+import '../../logic/register_cubit.dart';
 
 class PickImageScreen extends StatefulWidget {
   const PickImageScreen({super.key});
@@ -26,25 +28,31 @@ class PickImageScreenState extends State<PickImageScreen> {
      }
      );
    }
+
+
   }
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await picker.pickImage(source: source);
     if (pickedFile != null) {
       String path = pickedFile.path;
-      UserModelAuth? currentUser = await SavedInfoPerson.getInfoPerson(key: "currentUser");
-      if (currentUser != null) {
-        UserModelAuth updatedUser = UserModelAuth(
-          email: currentUser.email,
-          password: currentUser.password,
-          imageProfile: path,
-        );
-        await SavedInfoPerson.savedInfoPerson(user: updatedUser, key: "currentUser");
-        await SavedInfoPerson.savedInfoPerson(user: updatedUser, key: updatedUser.email!);
+      context.read<RegisterCubit>().pickedImagePath = path;
+      // UserModelAuth? currentUser = await SavedInfoPerson.getInfoPerson(key: "currentUser");
+      // if (currentUser != null) {
+      //   UserModelAuth updatedUser = UserModelAuth(
+      //     email: currentUser.email,
+      //     password: currentUser.password,
+      //     imageProfile: path,
+      //   );
+      //   await SavedInfoPerson.savedInfoPerson(user: updatedUser, key: "currentUser");
+      //   await SavedInfoPerson.savedInfoPerson(user: updatedUser, key: updatedUser.email!);
+      //   setState(() {
+      //     imagePath = path;
+      //   });
+      // }
         setState(() {
           imagePath = path;
         });
-      }
     } else {
       print('لم يتم اختيار صورة ');
     }

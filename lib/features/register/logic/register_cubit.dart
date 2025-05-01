@@ -10,6 +10,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   final TextEditingController passwordController =TextEditingController();
   final GlobalKey<FormState> formKey=GlobalKey();
    bool obscureText=false;
+  String? pickedImagePath;
 
   static RegisterCubit get(context) => BlocProvider.of(context);
   RegisterRepo registerRepo = RegisterRepo();
