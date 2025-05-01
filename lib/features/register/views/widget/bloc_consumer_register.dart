@@ -5,9 +5,6 @@ import 'package:bookly_app_t/features/register/logic/register_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
-
-import '../../../../core/constant/app_constant.dart';
 import '../../../../core/helper/my_navigator_app.dart';
 import '../../../../core/logic/is_login_hive.dart';
 import '../../../../core/logic/save_info_person.dart';
@@ -44,12 +41,7 @@ class BlocConsumerRegister extends StatelessWidget{
          onPressed: () async{
            if(cubitRegister.formKey.currentState!.validate()){
            cubitRegister.formKey.currentState!.save();
-           String imagePath = "";
-           UserModelAuth? tempUser = await SavedInfoPerson.getInfoPerson(key: "currentUser");
-           if (tempUser != null && tempUser.imageProfile != null && tempUser.imageProfile!.isNotEmpty) {
-             imagePath = tempUser.imageProfile!;
-           }
-
+           String? imagePath ;
            final UserModelAuth user = UserModelAuth(
              email: cubitRegister.emailController.text,
              password: cubitRegister.passwordController.text,
@@ -57,7 +49,7 @@ class BlocConsumerRegister extends StatelessWidget{
            );
            cubitRegister.userRegister(user);
            SavedLogin.savedLogin(isLogin: true);
-           SavedInfoPerson.savedInfoPerson(user:user, key: user.email!);
+           await SavedInfoPerson.savedInfoPerson(user:user, key: user.email!);
            await SavedInfoPerson.savedInfoPerson(user: user, key: "currentUser");
            }
          },

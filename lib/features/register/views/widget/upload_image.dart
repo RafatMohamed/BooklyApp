@@ -1,9 +1,7 @@
-import 'package:bookly_app_t/core/constant/app_constant.dart';
 import 'package:bookly_app_t/core/resources/app_color.dart';
 import 'package:bookly_app_t/core/resources/text_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/logic/save_info_person.dart';
 import '../../../../core/models/auth_user.dart';
@@ -48,7 +46,7 @@ class PickImageScreenState extends State<PickImageScreen> {
         });
       }
     } else {
-      print('لم يتم اختيار صورة.');
+      print('لم يتم اختيار صورة ');
     }
   }
 
