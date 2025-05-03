@@ -16,10 +16,12 @@ class CustomAppBarDetails extends StatelessWidget {
           },
           icon: const Icon(Icons.close, size: 32),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.shopping_cart_checkout_outlined, size: 32),
-        ),
+        //no Payment
+
+        // IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.shopping_cart_checkout_outlined, size: 32),
+        // ),
       ],
     );
   }

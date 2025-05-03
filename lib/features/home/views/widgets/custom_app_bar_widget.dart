@@ -3,9 +3,6 @@ import 'package:bookly_app_t/core/widget/custom_logo.dart';
 import 'package:bookly_app_t/features/search/views/search_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/widget/bloc_builder_them.dart';
-import '../../../../core/widget/drop_down_lang.dart';
-
 class CustomAppBarWidget extends StatelessWidget {
   const CustomAppBarWidget({super.key});
 

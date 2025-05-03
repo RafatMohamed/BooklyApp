@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import '../../../app/logic/them_toggle_cubit.dart';
 import '../../../core/constant/app_constant.dart';
+import '../../../core/helper/my_navigator_app.dart';
 import '../../../core/logic/save_info_person.dart';
 import '../../../core/models/auth_user.dart';
 import '../../../core/resources/app_color.dart';
@@ -55,13 +56,24 @@ class _PersonViewState extends State<PersonView> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.only(top: 75),
+          padding: const EdgeInsetsDirectional.only(top: 50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
-                alignment: AlignmentDirectional.topStart,
-                child: Text("welcome".tr(), style: Styles(context).textStyle30),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      AppNavigator.navigatorPop(context: context);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios_rounded, size: 18),
+                  ),
+                  const SizedBox(width: 10),
+                  Align(
+                    alignment: AlignmentDirectional.topStart,
+                    child: Text("welcome".tr(), style: Styles(context).textStyle30),
+                  ),
+                ],
               ),
               const SizedBox(height: 20),
               Center(
@@ -132,7 +144,6 @@ class _PersonViewState extends State<PersonView> {
                       ).tr(),
                     ],
                   ),
-
                   const DropDownLang(),
                 ],
               ),
